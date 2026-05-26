@@ -1,10 +1,12 @@
+"use client";
+
 import Image from "next/image";
 
 const stats = [
-  { label: "Tổng dự án", value: ">20", unit: "Dự án" },
-  { label: "Doanh thu", value: "520 tỷ", unit: "đồng" },
-  { label: "Tổng số nhân viên", value: "60", unit: "Nhân viên" },
-  { label: "Lực lượng thi công", value: "120", unit: "Nhân công" },
+  { label: "Kinh nghiệm", value: "20+", unit: "Năm" },
+  { label: "Chứng chỉ năng lực", value: "Hạng I", unit: "" },
+  { label: "Chỉ tiêu thí nghiệm", value: "108+", unit: "Chỉ tiêu" },
+  { label: "Khách hàng & Đối tác", value: "50+", unit: "Đơn vị" },
 ];
 
 const services = [
@@ -71,70 +73,136 @@ const clients = [
   "/hucons/partner-02.jpg",
 ];
 
+import { Award, HardHat, Search, ShieldCheck, Zap } from "lucide-react";
+
 export default function Home() {
+  const onLearnMoreClick = (sectionId: string) => {
+    const el = document.getElementById(sectionId);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <main className="min-h-screen bg-white text-slate-950">
-      <section className="relative min-h-[720px] overflow-hidden bg-[#16315e] text-white">
-        <Image src="/hucons/hero-fabric.jpg" alt="Nhà máy sản xuất" fill className="object-cover" priority />
-        <div className="absolute inset-0 bg-gradient-to-r from-[#06172e]/90 via-[#06172e]/45 to-transparent" />
-        <div className="relative z-10 mx-auto flex min-h-[720px] max-w-7xl items-end px-4 pb-28 pt-40 sm:px-6 lg:pb-36">
-          <div className="max-w-2xl">
-            <p className="mb-4 text-sm font-bold uppercase tracking-[0.22em] text-[#f7c948]">Dự án tiêu biểu</p>
-            <h1 className="max-w-4xl text-4xl font-bold leading-[1.2] sm:text-5xl sm:leading-[1.16] lg:text-[64px] lg:leading-[1.12]">
-              Nhà máy sản xuất Công ty Cổ phần Việt Nam Fabric
-            </h1>
-            <div className="mt-6 max-w-xl space-y-2 text-base leading-7 text-white/90 sm:text-lg">
-              <p>Quy mô: 11.000 m2</p>
-              <p>Vị trí: KCN Nhơn Trạch 6, xã Phước An, tỉnh Đồng Nai</p>
+      <section className="relative overflow-hidden bg-gradient-to-br from-emerald-950 via-emerald-900 to-emerald-950 py-16 text-white md:py-24">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute right-0 top-0 h-[600px] w-[600px] -translate-y-1/3 translate-x-1/3 rounded-full bg-gradient-to-b from-amber-400 to-transparent filter blur-[120px]" />
+          <div className="absolute bottom-0 left-10 h-[400px] w-[400px] -translate-x-1/4 translate-y-1/4 rounded-full bg-emerald-300 filter blur-[100px]" />
+        </div>
+
+        <div className="absolute inset-0 opacity-40 bg-[linear-gradient(to_right,#022c22_1px,transparent_1px),linear-gradient(to_bottom,#022c22_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]" />
+
+        <div className="relative mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
+          <div className="grid grid-cols-1 items-center gap-12 lg:grid-cols-12">
+            <div className="flex flex-col space-y-6 text-left lg:col-span-7">
+              <div className="inline-flex w-fit items-center space-x-2 rounded-full border border-emerald-700/80 bg-emerald-800/60 px-4 py-1.5 text-xs font-semibold tracking-wide text-amber-300 shadow-sm backdrop-blur-sm">
+                <ShieldCheck className="mr-1 h-4 w-4 text-amber-400" />
+                <span>Hồ sơ năng lực Doanh nghiệp - Cập nhật 2026</span>
+              </div>
+
+              <h1 className="select-none font-sans text-3xl font-black uppercase leading-tight tracking-tight text-white sm:text-4xl md:text-5xl lg:text-6xl">
+                Xây Vững Niềm Tin <br />
+                <span className="bg-gradient-to-r from-amber-300 via-amber-400 to-yellow-500 bg-clip-text text-transparent">
+                  Dựng Uy Tín Vàng
+                </span>
+              </h1>
+
+              <p className="max-w-2xl font-sans text-base font-medium leading-relaxed text-emerald-100/90 sm:text-lg">
+                Công ty Cổ phần Tư vấn Xây dựng Thương mại Phúc Mỹ Sơn. Trải qua hơn 20 năm trưởng thành bền vững, chúng tôi tự hào là đối tác cấp cao được Bộ Xây dựng cấp{" "}
+                <strong className="text-amber-300">Chứng chỉ Năng lực Hạng I </strong> về Tư vấn Giám sát &amp; Thiết kế Truyền tải Điện,
+                Thủy điện, Điện Gió và Hệ thống Phòng Thí Nghiệm LAS-XD toàn diện.
+              </p>
+
+
+              <div className="flex flex-wrap gap-4 pt-2">
+                <button
+                  onClick={() => onLearnMoreClick("services")}
+                  className="cursor-pointer rounded bg-white px-6 py-3 font-sans text-sm font-bold text-emerald-950 shadow-md transition-all duration-200 hover:bg-emerald-50 hover:shadow-lg"
+                >
+                  Khám Phá Dịch Vụ
+                </button>
+              </div>
             </div>
-            <a
-              href="#projects"
-              className="mt-8 inline-flex h-12 items-center bg-[#f7c948] px-6 text-sm font-bold uppercase text-[#16315e] transition hover:bg-white"
-            >
-              Xem dự án
-            </a>
+
+            {/* Quick interactive parameters widgets cards Column */}
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:col-span-5 lg:grid-cols-1">
+              {/* Project highlights count */}
+              <div className="group flex items-start space-x-4 rounded-xl border border-white/10 bg-white/5 p-5 shadow-sm backdrop-blur-md transition-all duration-200 hover:bg-white/10">
+                <div className="shrink-0 rounded-lg border border-amber-400/20 bg-amber-500/10 p-3 text-amber-400 transition-all group-hover:bg-amber-500/20">
+                  <Zap className="h-6 w-6" />
+                </div>
+                <div className="text-left">
+                  <h3 className="font-sans text-2xl font-black tracking-tight text-white transition-colors group-hover:text-amber-300">
+                    Hạng I
+                  </h3>
+                  <p className="mt-0.5 text-xs font-bold uppercase tracking-wider text-amber-200">Tư Vấn Giám Sát Công Nghiệp</p>
+                  <p className="mt-1 font-sans text-xs font-light text-emerald-200/80">
+                    Đảm bảo tiến độ, chất lượng các TBA siêu cao áp và đường dây truyền tải điện gió, điện mặt trời.
+                  </p>
+                </div>
+              </div>
+
+              {/* Test capabilities count */}
+              <div className="group flex items-start space-x-4 rounded-xl border border-white/10 bg-white/5 p-5 shadow-sm backdrop-blur-md transition-all duration-200 hover:bg-white/10">
+                <div className="shrink-0 rounded-lg border border-emerald-400/20 bg-emerald-400/10 p-3 text-emerald-400 transition-all group-hover:bg-emerald-400/20">
+                  <HardHat className="h-6 w-6" />
+                </div>
+                <div className="text-left">
+                  <h3 className="font-sans text-2xl font-black tracking-tight text-white transition-colors group-hover:text-emerald-300">
+                    108+ Chỉ Tiêu
+                  </h3>
+                  <p className="mt-0.5 text-xs font-bold uppercase tracking-wider text-emerald-300">LAS-XD763 &amp; LAS-XD HCM.017</p>
+                  <p className="mt-1 font-sans text-xs font-light text-emerald-200/80">
+                    Đầy đủ hệ thống máy nén 2000kN, máy kéo thép 1000kN, nén tĩnh cọc móng, thử bền, cơ lý đất.
+                  </p>
+                </div>
+              </div>
+
+              {/* Exp highlights */}
+              <div className="group flex items-start space-x-4 rounded-xl border border-white/10 bg-white/5 p-5 shadow-sm backdrop-blur-md transition-all duration-200 hover:bg-white/10">
+                <div className="shrink-0 rounded-lg border border-blue-400/20 bg-blue-400/10 p-3 text-blue-400 transition-all group-hover:bg-blue-400/20">
+                  <Award className="h-6 w-6" />
+                </div>
+                <div className="text-left">
+                  <h3 className="font-sans text-2xl font-black tracking-tight text-white transition-colors group-hover:text-blue-300">
+                    20+ Năm
+                  </h3>
+                  <p className="mt-0.5 text-xs font-bold uppercase tracking-wider text-blue-300">Lịch Sử Phát Triển</p>
+                  <p className="mt-1 font-sans text-xs font-light text-emerald-200/80">
+                    Sáng lập năm 2004, vượt qua vô vàn phê chuẩn chặt chẽ của SP-MB, Bộ Công Thương, Tập đoàn lớn.
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="relative z-20 mx-auto -mt-12 max-w-7xl px-4 sm:px-6">
-        <div className="grid overflow-hidden border border-slate-200 bg-white shadow-2xl shadow-slate-950/10 lg:grid-cols-[260px_1fr_64px]">
-          <div className="bg-[#00572d] px-6 py-5 text-sm font-bold uppercase text-white">Tin tức mới nhất</div>
-          <a href="#news" className="px-6 py-5 text-sm font-semibold text-slate-800 transition hover:text-[#174f99]">
-            Hucons Year End Party 2025: Đột phá & phát triển
-          </a>
-          <a href="#news" className="flex items-center justify-center bg-[#174f99] text-2xl text-white">
-            →
-          </a>
-        </div>
-      </section>
 
       <section className="px-4 py-20 sm:px-6 lg:py-28">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-4xl text-center">
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#00572d]">Công ty TNHH Xây dựng Hucons</p>
-            <h2 className="mt-4 text-3xl font-extrabold uppercase text-[#174f99] sm:text-4xl">
-              Đơn vị tổng thầu thiết kế và thi công uy tín
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#098a58]">Công ty Cổ phần Tư vấn Xây dựng Thương mại Phúc Mỹ Sơn</p>
+            <h2 className="mt-4 text-3xl font-extrabold uppercase text-emerald-950 sm:text-4xl">
+              Đối Tác Chiến Lược Của Các Dự Án Năng Lượng &amp; Thí Nghiệm Trọng Điểm
             </h2>
             <p className="mt-6 text-base leading-8 text-slate-600">
-              Chất lượng và sự hài lòng của khách hàng là tôn chỉ hành động. Hucons cam kết mang đến sản phẩm, dịch vụ có giá trị lâu dài,
-              đảm bảo an toàn và tiến độ trên mỗi dự án.
+              Với phương châm &quot;Xây vững niềm tin - Dựng uy tín vàng&quot;, PMS TCC cam kết cung cấp dịch vụ tư vấn giám sát, thiết kế và thí nghiệm chuyên sâu, mang lại độ chính xác tuyệt đối và giá trị bền vững cho từng công trình.
             </p>
           </div>
 
-          <div className="mt-14 grid gap-px overflow-hidden bg-slate-200 md:grid-cols-2 lg:grid-cols-4">
+          <div className="mt-14 grid gap-px overflow-hidden bg-emerald-900/10 rounded-2xl md:grid-cols-2 lg:grid-cols-4 shadow-sm border border-emerald-900/10">
             {stats.map((item) => (
-              <div key={item.label} className="bg-white p-8 text-center">
+              <div key={item.label} className="bg-white p-8 text-center transition-all duration-300 hover:bg-emerald-50/50">
                 <p className="text-sm font-bold uppercase text-slate-500">{item.label}</p>
-                <p className="mt-4 text-4xl font-extrabold text-[#174f99]">{item.value}</p>
-                <p className="mt-2 text-sm text-slate-500">{item.unit}</p>
+                <p className="mt-4 text-4xl lg:text-5xl font-black tracking-tight text-[#098a58]">{item.value}</p>
+                {item.unit && <p className="mt-3 text-xs font-bold text-emerald-800/70 uppercase tracking-wider">{item.unit}</p>}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-slate-50 px-4 py-20 sm:px-6">
+      <section id="services" className="bg-slate-50 px-4 py-20 sm:px-6">
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-6 lg:grid-cols-3">
             {services.map((service) => (
@@ -209,15 +277,6 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="bg-[#06172e] px-4 py-10 text-white sm:px-6">
-        <div className="mx-auto flex max-w-7xl flex-col gap-6 md:flex-row md:items-center md:justify-between">
-          <div>
-            <p className="text-lg font-extrabold uppercase">Hucons</p>
-            <p className="mt-2 text-sm text-white/70">Tổng thầu thiết kế và thi công dân dụng, công nghiệp.</p>
-          </div>
-          <div className="text-sm text-white/70">info@hucons.vn · 0919 882 886</div>
-        </div>
-      </footer>
     </main>
   );
 }
