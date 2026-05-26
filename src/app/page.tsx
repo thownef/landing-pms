@@ -72,7 +72,6 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Test capabilities count */}
               <div className="group flex items-start space-x-4 rounded-xl border border-white/10 bg-white/5 p-5 shadow-sm backdrop-blur-md transition-all duration-200 hover:bg-white/10">
                 <div className="shrink-0 rounded-lg border border-emerald-400/20 bg-emerald-400/10 p-3 text-emerald-400 transition-all group-hover:bg-emerald-400/20">
                   <HardHat className="h-6 w-6" />
@@ -134,9 +133,8 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-16 bg-white border-b border-emerald-900/10 relative overflow-hidden">
+      <section className="pb-20 lg:pb-28 bg-white border-b border-emerald-900/10 relative overflow-hidden">
         <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full bg-emerald-50 opacity-50 blur-[80px]" />
-
         <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-12">
             <span className="text-xs font-bold tracking-widest text-emerald-800 uppercase bg-emerald-50 border border-emerald-100 px-3 py-1 rounded">
@@ -148,26 +146,24 @@ export default function Home() {
             <p className="text-sm text-slate-500 font-medium mt-3">
               Dấu ấn tạo lập vị thế vững chắc hơn 20 năm hoạt động tư vấn thí nghiệm xây dựng độc lập.
             </p>
-            <div className="w-12 h-1 bg-amber-400 mx-auto mt-6 rounded-full" />
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="p-8 bg-white rounded-2xl border border-emerald-300 shadow-xl text-left flex flex-col justify-between relative overflow-hidden">
               <div className="absolute top-0 left-0 w-1 h-full bg-emerald-400" />
               <div className="space-y-5">
-                <div className="w-12 h-12 rounded-xl bg-emerald-800 text-amber-300 border border-emerald-800 flex items-center justify-center shadow-md">
-                  <Check className="w-6 h-6" strokeWidth={2.5} />
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 shrink-0 rounded-xl bg-emerald-800 text-amber-300 border border-emerald-800 flex items-center justify-center shadow-md">
+                    <Check className="w-6 h-6" strokeWidth={2.5} />
+                  </div>
+                  <h3 className="text-lg font-black text-emerald-950 uppercase tracking-tight leading-snug">Tính Độc Lập Khách Quan</h3>
                 </div>
-                <h3 className="text-lg font-black text-emerald-950 uppercase tracking-tight leading-snug">
-                  Tính Độc Lập <br /> Khách Quan
-                </h3>
-                <p className="text-sm text-slate-600 leading-relaxed font-light">
-                  Chúng tôi hiểu rõ giá trị cốt lõi của kết quả thí nghiệm đo lường. Phòng LAB mã số{" "}
-                  <strong className="text-emerald-900 font-bold bg-emerald-50 px-1">LAS-XD 763</strong> cam kết 100% dữ liệu thử phá hủy bê
+                <p className="text-sm leading-relaxed font-light">
+                  Chúng tôi hiểu rõ giá trị cốt lõi của kết quả thí nghiệm đo lường. Phòng LAB mã số LAS-XD 763 cam kết 100% dữ liệu thử phá hủy bê
                   tông cốt móng hay siêu âm kéo thép đều được tiến hành chuẩn chỉnh, không thỏa hiệp.
                 </p>
               </div>
-              <div className="text-[10px] text-emerald-800 font-bold tracking-wider uppercase mt-8 pt-4 border-t border-slate-100">
+              <div className="text-xs text-emerald-800 font-bold tracking-wider uppercase mt-8 pt-4 border-t border-slate-100">
                 ★ Tiêu chuẩn ISO/IEC 17025
               </div>
             </div>
@@ -175,18 +171,18 @@ export default function Home() {
             <div className="p-8 bg-white rounded-2xl border border-emerald-300 shadow-xl text-left flex flex-col justify-between relative overflow-hidden">
               <div className="absolute top-0 left-0 w-1 h-full bg-emerald-400" />
               <div className="space-y-5">
-                <div className="w-12 h-12 rounded-xl bg-emerald-800 text-amber-300 border border-emerald-800 flex items-center justify-center shadow-md">
-                  <Shield className="w-6 h-6" strokeWidth={2.5} />
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 shrink-0 rounded-xl bg-emerald-800 text-amber-300 border border-emerald-800 flex items-center justify-center shadow-md">
+                    <Shield className="w-6 h-6" strokeWidth={2.5} />
+                  </div>
+                  <h3 className="text-lg font-black text-emerald-950 uppercase tracking-tight leading-snug">Kỹ Thuật Thực Chiến</h3>
                 </div>
-                <h3 className="text-lg font-black text-emerald-950 uppercase tracking-tight leading-snug">
-                  Kỹ Thuật <br /> Thực Chiến
-                </h3>
                 <p className="text-sm text-slate-600 leading-relaxed font-light">
                   Quy tụ những Chuyên gia đầu ngành thiết kế móng mác cao, tư vấn giám sát kết cấu móng tuabin sâu dưới biển hay trạm biến
                   áp cực kỳ phức tạp. PMS-TCC không bán lý thuyết suông; chúng tôi giải quyết bài toán thực địa.
                 </p>
               </div>
-              <div className="text-[10px] text-emerald-800 font-bold tracking-wider uppercase mt-8 pt-4 border-t border-slate-100">
+              <div className="text-xs text-emerald-800 font-bold tracking-wider uppercase mt-8 pt-4 border-t border-slate-100">
                 ★ Đội ngũ 30+ Thạc Sĩ/KS
               </div>
             </div>
@@ -194,18 +190,18 @@ export default function Home() {
             <div className="p-8 bg-white rounded-2xl border border-emerald-300 shadow-xl text-left flex flex-col justify-between relative overflow-hidden">
               <div className="absolute top-0 left-0 w-1 h-full bg-emerald-400" />
               <div className="space-y-5">
-                <div className="w-12 h-12 rounded-xl bg-emerald-800 text-amber-300 border border-emerald-800 flex items-center justify-center shadow-md">
-                  <Activity className="w-6 h-6" strokeWidth={2.5} />
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-12 shrink-0 rounded-xl bg-emerald-800 text-amber-300 border border-emerald-800 flex items-center justify-center shadow-md">
+                    <Activity className="w-6 h-6" strokeWidth={2.5} />
+                  </div>
+                  <h3 className="text-lg font-black text-emerald-950 uppercase tracking-tight leading-snug">Minh Bạch Pháp Lý</h3>
                 </div>
-                <h3 className="text-lg font-black text-emerald-950 uppercase tracking-tight leading-snug">
-                  Minh Bạch <br /> Pháp Lý
-                </h3>
                 <p className="text-sm text-slate-600 leading-relaxed font-light">
                   Mọi kết quả đều đi kèm chữ ký pháp lý cùng dấu mộc đỏ được cơ quan chức năng công nhận chính thức trên toàn quốc. Chúng
                   tôi số hóa và báo cáo tiến trình thực trạng nén cọc móng nhanh qua nền tảng giúp chủ đầu tư an tâm.
                 </p>
               </div>
-              <div className="text-[10px] text-emerald-800 font-bold tracking-wider uppercase mt-8 pt-4 border-t border-slate-100">
+              <div className="text-xs text-emerald-800 font-bold tracking-wider uppercase mt-8 pt-4 border-t border-slate-100">
                 ★ Năng lực Hạng I - BXD
               </div>
             </div>
