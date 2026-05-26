@@ -1,7 +1,5 @@
 "use client";
 
-import Image from "next/image";
-
 const stats = [
   { label: "Kinh nghiệm", value: "20+", unit: "Năm" },
   { label: "Chứng chỉ năng lực", value: "Hạng I", unit: "" },
@@ -9,71 +7,7 @@ const stats = [
   { label: "Khách hàng & Đối tác", value: "50+", unit: "Đơn vị" },
 ];
 
-const services = [
-  {
-    title: "Tổng thầu thiết kế & thi công",
-    image: "/hucons/service-design-build.jpg",
-  },
-  {
-    title: "Tổng thầu thi công dự án dân dụng & công nghiệp",
-    image: "/hucons/service-civil-industrial.jpg",
-  },
-  {
-    title: "Thi công cơ điện",
-    image: "/hucons/service-mep.jpg",
-  },
-];
-
-const projects = [
-  {
-    title: "Nhà máy BHT Nam Hà",
-    image: "/hucons/project-bht.jpg",
-  },
-  {
-    title: "Nhà máy sản xuất Công ty Cổ phần Việt Nam Fabric",
-    image: "/hucons/project-fabric.jpg",
-  },
-  {
-    title: "Nhà máy sản xuất kính Công ty Sunpim",
-    image: "/hucons/project-sunpim.png",
-  },
-];
-
-const news = [
-  {
-    title: "Hucons Year End Party 2025: Đột phá & phát triển",
-    date: "11/02/2026",
-    image: "/hucons/news-year-end.jpg",
-    excerpt: "Đêm tiệc Year End Party khép lại năm 2025 với không khí gắn kết, tri ân và nhiều dấu ấn phát triển.",
-  },
-  {
-    title: "Cập nhật tiến độ thi công tháng 12/2025 - Dự án Nhà máy BHT Nam Hà",
-    date: "11/12/2025",
-    image: "/hucons/news-progress.jpg",
-    excerpt: "Các đội thi công tiếp tục triển khai theo kế hoạch, bám sát từng hạng mục và duy trì tiến độ.",
-  },
-  {
-    title: "Lễ động thổ Nhà máy sản xuất Công ty Cổ phần Việt Nam Fabric",
-    date: "27/10/2025",
-    image: "/hucons/news-groundbreaking.jpg",
-    excerpt: "Sự kiện đánh dấu bước khởi đầu quan trọng trong hành trình mở rộng quy mô sản xuất.",
-  },
-];
-
-const clients = [
-  "/hucons/client-01.png",
-  "/hucons/client-02.png",
-  "/hucons/client-03.png",
-  "/hucons/client-04.png",
-  "/hucons/client-05.png",
-  "/hucons/client-06.png",
-  "/hucons/client-07.png",
-  "/hucons/client-08.png",
-  "/hucons/partner-01.jpg",
-  "/hucons/partner-02.jpg",
-];
-
-import { Award, HardHat, Search, ShieldCheck, Zap } from "lucide-react";
+import { Activity, Award, Check, HardHat, Shield, ShieldCheck, Zap } from "lucide-react";
 
 export default function Home() {
   const onLearnMoreClick = (sectionId: string) => {
@@ -107,11 +41,10 @@ export default function Home() {
               </h1>
 
               <p className="max-w-2xl font-sans text-base font-medium leading-relaxed text-emerald-100/90 sm:text-lg">
-                Công ty Cổ phần Tư vấn Xây dựng Thương mại Phúc Mỹ Sơn. Trải qua hơn 20 năm trưởng thành bền vững, chúng tôi tự hào là đối tác cấp cao được Bộ Xây dựng cấp{" "}
-                <strong className="text-amber-300">Chứng chỉ Năng lực Hạng I </strong> về Tư vấn Giám sát &amp; Thiết kế Truyền tải Điện,
-                Thủy điện, Điện Gió và Hệ thống Phòng Thí Nghiệm LAS-XD toàn diện.
+                Công ty Cổ phần Tư vấn Xây dựng Thương mại Phúc Mỹ Sơn. Trải qua hơn 20 năm trưởng thành bền vững, chúng tôi tự hào là đối
+                tác cấp cao được Bộ Xây dựng cấp <strong className="text-amber-300">Chứng chỉ Năng lực Hạng I </strong> về Tư vấn Giám sát
+                &amp; Thiết kế Truyền tải Điện, Thủy điện, Điện Gió và Hệ thống Phòng Thí Nghiệm LAS-XD toàn diện.
               </p>
-
 
               <div className="flex flex-wrap gap-4 pt-2">
                 <button
@@ -123,9 +56,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Quick interactive parameters widgets cards Column */}
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:col-span-5 lg:grid-cols-1">
-              {/* Project highlights count */}
               <div className="group flex items-start space-x-4 rounded-xl border border-white/10 bg-white/5 p-5 shadow-sm backdrop-blur-md transition-all duration-200 hover:bg-white/10">
                 <div className="shrink-0 rounded-lg border border-amber-400/20 bg-amber-500/10 p-3 text-amber-400 transition-all group-hover:bg-amber-500/20">
                   <Zap className="h-6 w-6" />
@@ -157,7 +88,6 @@ export default function Home() {
                 </div>
               </div>
 
-              {/* Exp highlights */}
               <div className="group flex items-start space-x-4 rounded-xl border border-white/10 bg-white/5 p-5 shadow-sm backdrop-blur-md transition-all duration-200 hover:bg-white/10">
                 <div className="shrink-0 rounded-lg border border-blue-400/20 bg-blue-400/10 p-3 text-blue-400 transition-all group-hover:bg-blue-400/20">
                   <Award className="h-6 w-6" />
@@ -177,16 +107,18 @@ export default function Home() {
         </div>
       </section>
 
-
       <section className="px-4 py-20 sm:px-6 lg:py-28">
         <div className="mx-auto max-w-7xl">
           <div className="mx-auto max-w-4xl text-center">
-            <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#098a58]">Công ty Cổ phần Tư vấn Xây dựng Thương mại Phúc Mỹ Sơn</p>
+            <p className="text-sm font-bold uppercase tracking-[0.2em] text-[#098a58]">
+              Công ty Cổ phần Tư vấn Xây dựng Thương mại Phúc Mỹ Sơn
+            </p>
             <h2 className="mt-4 text-3xl font-extrabold uppercase text-emerald-950 sm:text-4xl">
               Đối Tác Chiến Lược Của Các Dự Án Năng Lượng &amp; Thí Nghiệm Trọng Điểm
             </h2>
             <p className="mt-6 text-base leading-8 text-slate-600">
-              Với phương châm &quot;Xây vững niềm tin - Dựng uy tín vàng&quot;, PMS TCC cam kết cung cấp dịch vụ tư vấn giám sát, thiết kế và thí nghiệm chuyên sâu, mang lại độ chính xác tuyệt đối và giá trị bền vững cho từng công trình.
+              Với phương châm &quot;Xây vững niềm tin - Dựng uy tín vàng&quot;, PMS TCC cam kết cung cấp dịch vụ tư vấn giám sát, thiết kế
+              và thí nghiệm chuyên sâu, mang lại độ chính xác tuyệt đối và giá trị bền vững cho từng công trình.
             </p>
           </div>
 
@@ -202,90 +134,84 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="services" className="bg-slate-50 px-4 py-20 sm:px-6">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-6 lg:grid-cols-3">
-            {services.map((service) => (
-              <a key={service.title} href="#" className="group relative block aspect-square overflow-hidden bg-slate-900">
-                <Image
-                  src={service.image}
-                  alt={service.title}
-                  fill
-                  className="object-cover transition duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#06172e]/85 via-[#06172e]/15 to-transparent" />
-                <div className="absolute inset-x-0 bottom-0 p-7">
-                  <h3 className="text-2xl font-extrabold uppercase leading-tight text-white">{service.title}</h3>
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
+      <section className="py-16 bg-white border-b border-emerald-900/10 relative overflow-hidden">
+        <div className="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 rounded-full bg-emerald-50 opacity-50 blur-[80px]" />
 
-      <section id="projects" className="px-4 py-20 sm:px-6 lg:py-28">
-        <div className="mx-auto max-w-7xl">
-          <SectionTitle eyebrow="Tiêu biểu" title="Dự án" />
-          <div className="mt-12 grid gap-7 lg:grid-cols-3">
-            {projects.map((project) => (
-              <article key={project.title} className="overflow-hidden border border-slate-200 bg-white">
-                <div className="relative aspect-[3/2] overflow-hidden">
-                  <Image src={project.image} alt={project.title} fill className="object-cover" />
-                </div>
-                <div className="p-6">
-                  <h3 className="text-lg font-extrabold uppercase leading-snug text-[#16315e]">{project.title}</h3>
-                </div>
-              </article>
-            ))}
+        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8 relative z-10">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <span className="text-xs font-bold tracking-widest text-emerald-800 uppercase bg-emerald-50 border border-emerald-100 px-3 py-1 rounded">
+              Triết Lý Vận Hành
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-emerald-950 uppercase mt-4">
+              3 Trụ Cột Cam Kết Vàng tại PMS-TCC
+            </h2>
+            <p className="text-sm text-slate-500 font-medium mt-3">
+              Dấu ấn tạo lập vị thế vững chắc hơn 20 năm hoạt động tư vấn thí nghiệm xây dựng độc lập.
+            </p>
+            <div className="w-12 h-1 bg-amber-400 mx-auto mt-6 rounded-full" />
           </div>
-        </div>
-      </section>
 
-      <section id="news" className="bg-slate-50 px-4 py-20 sm:px-6 lg:py-28">
-        <div className="mx-auto max-w-7xl">
-          <SectionTitle eyebrow="Nổi bật" title="Tin tức" />
-          <div className="mt-12 grid gap-7 lg:grid-cols-3">
-            {news.map((item) => (
-              <article key={item.title} className="overflow-hidden border border-slate-200 bg-white">
-                <div className="relative aspect-[16/10] overflow-hidden">
-                  <Image src={item.image} alt={item.title} fill className="object-cover" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="p-8 bg-white rounded-2xl border border-emerald-300 shadow-xl text-left flex flex-col justify-between relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-1 h-full bg-emerald-400" />
+              <div className="space-y-5">
+                <div className="w-12 h-12 rounded-xl bg-emerald-800 text-amber-300 border border-emerald-800 flex items-center justify-center shadow-md">
+                  <Check className="w-6 h-6" strokeWidth={2.5} />
                 </div>
-                <div className="p-6">
-                  <time className="text-sm font-semibold text-[#00572d]">{item.date}</time>
-                  <h3 className="mt-3 text-lg font-extrabold uppercase leading-snug text-[#16315e]">{item.title}</h3>
-                  <p className="mt-4 text-sm leading-6 text-slate-600">{item.excerpt}</p>
-                  <a className="mt-5 inline-flex text-sm font-bold uppercase text-[#174f99]" href="#">
-                    Xem thêm →
-                  </a>
-                </div>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-[#16315e] px-4 py-20 text-white sm:px-6">
-        <div className="mx-auto max-w-7xl">
-          <SectionTitle eyebrow="Khách hàng" title="Và đối tác" inverted />
-          <div className="mt-12 grid grid-cols-2 gap-px overflow-hidden bg-white/15 md:grid-cols-5">
-            {clients.map((client, index) => (
-              <div key={client} className="flex h-28 items-center justify-center bg-white p-5">
-                <Image src={client} alt={`Đối tác ${index + 1}`} width={180} height={90} className="max-h-16 w-auto object-contain" />
+                <h3 className="text-lg font-black text-emerald-950 uppercase tracking-tight leading-snug">
+                  Tính Độc Lập <br /> Khách Quan
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed font-light">
+                  Chúng tôi hiểu rõ giá trị cốt lõi của kết quả thí nghiệm đo lường. Phòng LAB mã số{" "}
+                  <strong className="text-emerald-900 font-bold bg-emerald-50 px-1">LAS-XD 763</strong> cam kết 100% dữ liệu thử phá hủy bê
+                  tông cốt móng hay siêu âm kéo thép đều được tiến hành chuẩn chỉnh, không thỏa hiệp.
+                </p>
               </div>
-            ))}
+              <div className="text-[10px] text-emerald-800 font-bold tracking-wider uppercase mt-8 pt-4 border-t border-slate-100">
+                ★ Tiêu chuẩn ISO/IEC 17025
+              </div>
+            </div>
+
+            <div className="p-8 bg-white rounded-2xl border border-emerald-300 shadow-xl text-left flex flex-col justify-between relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-1 h-full bg-emerald-400" />
+              <div className="space-y-5">
+                <div className="w-12 h-12 rounded-xl bg-emerald-800 text-amber-300 border border-emerald-800 flex items-center justify-center shadow-md">
+                  <Shield className="w-6 h-6" strokeWidth={2.5} />
+                </div>
+                <h3 className="text-lg font-black text-emerald-950 uppercase tracking-tight leading-snug">
+                  Kỹ Thuật <br /> Thực Chiến
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed font-light">
+                  Quy tụ những Chuyên gia đầu ngành thiết kế móng mác cao, tư vấn giám sát kết cấu móng tuabin sâu dưới biển hay trạm biến
+                  áp cực kỳ phức tạp. PMS-TCC không bán lý thuyết suông; chúng tôi giải quyết bài toán thực địa.
+                </p>
+              </div>
+              <div className="text-[10px] text-emerald-800 font-bold tracking-wider uppercase mt-8 pt-4 border-t border-slate-100">
+                ★ Đội ngũ 30+ Thạc Sĩ/KS
+              </div>
+            </div>
+
+            <div className="p-8 bg-white rounded-2xl border border-emerald-300 shadow-xl text-left flex flex-col justify-between relative overflow-hidden">
+              <div className="absolute top-0 left-0 w-1 h-full bg-emerald-400" />
+              <div className="space-y-5">
+                <div className="w-12 h-12 rounded-xl bg-emerald-800 text-amber-300 border border-emerald-800 flex items-center justify-center shadow-md">
+                  <Activity className="w-6 h-6" strokeWidth={2.5} />
+                </div>
+                <h3 className="text-lg font-black text-emerald-950 uppercase tracking-tight leading-snug">
+                  Minh Bạch <br /> Pháp Lý
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed font-light">
+                  Mọi kết quả đều đi kèm chữ ký pháp lý cùng dấu mộc đỏ được cơ quan chức năng công nhận chính thức trên toàn quốc. Chúng
+                  tôi số hóa và báo cáo tiến trình thực trạng nén cọc móng nhanh qua nền tảng giúp chủ đầu tư an tâm.
+                </p>
+              </div>
+              <div className="text-[10px] text-emerald-800 font-bold tracking-wider uppercase mt-8 pt-4 border-t border-slate-100">
+                ★ Năng lực Hạng I - BXD
+              </div>
+            </div>
           </div>
         </div>
       </section>
-
     </main>
-  );
-}
-
-function SectionTitle({ eyebrow, title, inverted = false }: { eyebrow: string; title: string; inverted?: boolean }) {
-  return (
-    <div className="text-center">
-      <p className={`text-sm font-bold uppercase tracking-[0.22em] ${inverted ? "text-[#f7c948]" : "text-[#00572d]"}`}>{eyebrow}</p>
-      <h2 className={`mt-3 text-4xl font-extrabold uppercase ${inverted ? "text-white" : "text-[#174f99]"}`}>{title}</h2>
-    </div>
   );
 }

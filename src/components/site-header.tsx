@@ -60,23 +60,23 @@ export function SiteHeader() {
 
   return (
     <header className="relative z-50 flex w-full flex-col transition-all duration-300">
-      <div className="hidden border-b border-white/10 bg-[#098a58] px-4 py-2 text-xs text-white shadow-inner md:block">
+      <div className="hidden border-b border-white/10 bg-[#098a58] px-4 py-2 text- text-white shadow-inner md:block">
         <div className="mx-auto flex max-w-7xl items-center justify-between tracking-wide">
           <div className="flex items-center space-x-6">
             <span className="flex items-center space-x-1">
-              <Phone className="h-3.5 w-3.5 text-amber-300" />
+              <Phone className="h-4 w-4 text-amber-300" />
               <a href="tel:02835114395" className="transition-colors hover:text-amber-300">
                 SĐT: 028.3511.4395
               </a>
             </span>
             <span className="flex items-center space-x-1">
-              <Phone className="h-3.5 w-3.5 text-amber-300" />
+              <Phone className="h-4 w-4 text-amber-300" />
               <a href="tel:0354408547" className="transition-colors hover:text-amber-300">
                 Hotline: 035.440.8547 (GĐ Thảo)
               </a>
             </span>
-            <span className="flex items-center space-x-1">
-              <Mail className="h-3.5 w-3.5 text-amber-300" />
+            <span className="flex items-center space-x-1 ">
+              <Mail className="h-4 w-4 text-amber-300" />
               <a href="mailto:lasxdhcm017.pms@gmail.com" className="transition-colors hover:text-amber-300">
                 lasxdhcm017.pms@gmail.com
               </a>
@@ -85,12 +85,12 @@ export function SiteHeader() {
 
           <div className="flex items-center space-x-4">
             <span className="flex items-center text-base text-white/85">
-              <ShieldCheck className="mr-1 h-3.5 w-3.5 text-amber-300" />
+              <ShieldCheck className="mr-1 h-4 w-4 text-amber-300" />
               ISO 9001:2015 Accredited
             </span>
             <span className="text-white/40">|</span>
             <span className="flex items-center space-x-1">
-              <MapPin className="h-3 w-3 text-amber-300" />
+              <MapPin className="h-4 w-4 text-amber-300" />
               <span className="text-base">Trụ sở: Thủ Đức, TP.HCM</span>
             </span>
           </div>
@@ -146,7 +146,7 @@ export function SiteHeader() {
                         }`}
                       >
                         {item.label}
-                        <ChevronDown className={`h-3.5 w-3.5 transition-transform duration-200 ${openDropdown === item.label ? "rotate-180" : ""}`} strokeWidth={2} />
+                        <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${openDropdown === item.label ? "rotate-180" : ""}`} strokeWidth={2} />
                       </button>
                       {openDropdown === item.label && (
                         <div className="absolute left-1/2 top-full w-[310px] -translate-x-1/2 pt-3 z-50">
@@ -282,14 +282,14 @@ export function SiteHeader() {
                   Hotline: 035.440.8547
                 </a>
               </div>
-              <div className="flex items-center space-x-2 px-4 text-xs text-gray-600">
+              <div className="flex items-center space-x-2 px-4 text-base text-gray-600">
                 <Mail className="h-4 w-4 text-[#098a58]" />
                 <a href="mailto:lasxdhcm017.pms@gmail.com">lasxdhcm017.pms@gmail.com</a>
               </div>
               <Link
                 href="/contact"
                 onClick={() => setMobileMenuOpen(false)}
-                className="w-full rounded bg-[#098a58] py-3 text-center text-xs font-bold text-white hover:bg-[#08794d]"
+                className="w-full rounded bg-[#098a58] py-3 text-center text-base font-bold text-white hover:bg-[#08794d]"
               >
                 Liên hệ ngay
               </Link>
