@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import { FloatingActions } from "@/components/floating-actions";
 import { SiteHeader } from "@/components/site-header";
+import { SiteFooter } from "@/components/site-footer";
 import "./globals.css";
 
 const roboto = Roboto({
@@ -25,6 +26,7 @@ export default function RootLayout({
       <body className={`${roboto.className} min-h-full flex flex-col`}>
         <SiteHeader />
         {children}
+        <SiteFooter />
         <FloatingActions />
       </body>
     </html>
