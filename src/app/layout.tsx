@@ -12,8 +12,8 @@ const roboto = Roboto({
 });
 
 export const metadata: Metadata = {
-  title: "Hucons - Tổng thầu thiết kế và thi công",
-  description: "Trang chủ giới thiệu năng lực, dự án và tin tức Hucons.",
+  title: "PMS - Tư vấn thiết kế và thí nghiệm",
+  description: "Trang chủ giới thiệu năng lực, dự án và tin tức PMS.",
 };
 
 export default function RootLayout({
