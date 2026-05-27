@@ -48,7 +48,7 @@ const CapacityProfile = () => {
 
             <div className="space-y-1">
               <h4 className="text-xl sm:text-2xl font-black tracking-widest text-[#0c2e1a] uppercase">HỒ SƠ NĂNG LỰC</h4>
-              <p className="text-[10px] text-gray-500">www.pmstcc.vn</p>
+              <p className="text-[10px] text-gray-500">phucmyson.vn</p>
             </div>
           </div>
         </a>
