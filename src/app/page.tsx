@@ -208,6 +208,40 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <section className="py-16 bg-[#fafbfc] border-b border-gray-200 text-left">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <span className="text-xs font-bold tracking-widest text-emerald-800 uppercase bg-emerald-50 px-3 py-1 rounded">Quy Trình Chuyên Nghiệp</span>
+            <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-emerald-950 uppercase mt-3">Phương Thức Phối Hợp Kỹ Thuật</h2>
+            <p className="text-xs text-gray-500 mt-2">Sự nhịp nhàng từ hiện trường đến báo cáo lý tính số hóa, bảo mật tối đa cho chủ dự án.</p>
+            <div className="w-12 h-0.5 bg-amber-400 mx-auto mt-4 rounded-full" />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
+            <div className="absolute top-[38px] left-[10%] right-[10%] h-[2px] bg-emerald-200 hidden md:block z-0" />
+            <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm z-10 hover:border-emerald-300 transition-all">
+              <span className="text-2xl font-black text-amber-500">01</span>
+              <h4 className="text-xs font-bold text-emerald-900 uppercase tracking-widest mt-2">Kháo Sát Mẫu Thử</h4>
+              <p className="text-xs text-gray-600 font-light mt-2 leading-relaxed">Lấy mẫu tại chỗ ở hiện trường móng cột tuabin gió, hoặc đăng ký nhận mẫu bê tông cốt đúc từ công trường chuyển về phòng LAB chuyên sâu.</p>
+            </div>
+            <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm z-10 hover:border-emerald-300 transition-all">
+              <span className="text-2xl font-black text-amber-500">02</span>
+              <h4 className="text-xs font-bold text-emerald-900 uppercase tracking-widest mt-2">Thực Thí Vật Lý</h4>
+              <p className="text-xs text-gray-600 font-light mt-2 leading-relaxed">Tiến hành gia tải đỉnh nén phá hủy bê tông cốt nguội bằng WA-1000B, siêu âm xung sóng cọc khoan, đo điện tích điện trở của hệ thu lôi.</p>
+            </div>
+            <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm z-10 hover:border-emerald-300 transition-all">
+              <span className="text-2xl font-black text-amber-500">03</span>
+              <h4 className="text-xs font-bold text-emerald-900 uppercase tracking-widest mt-2">Lập Kết Luận Pháp Lý</h4>
+              <p className="text-xs text-gray-600 font-light mt-2 leading-relaxed">Đội ngũ Thạc sĩ kiểm soát và biên soạn bộ chỉ số cơ lý theo đúng tiêu chuẩn hành pháp của Sở Xây Dựng và Bộ Công Thương quốc gia.</p>
+            </div>
+            <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm z-10 hover:border-emerald-300 transition-all">
+              <span className="text-2xl font-black text-amber-500">04</span>
+              <h4 className="text-xs font-bold text-emerald-900 uppercase tracking-widest mt-2">Cấp Phê Duyệt</h4>
+              <p className="text-xs text-gray-600 font-light mt-2 leading-relaxed">Bàn giao tận tay hồ sơ kết luận gốc có mộc đỏ hợp thức hóa toàn bộ quá trình thanh toán giải ngân đầu tư của dự án với ngân hàng.</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
   );
 }
