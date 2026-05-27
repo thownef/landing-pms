@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Award } from "lucide-react";
+import CapacityProfile from "@/components/CapacityProfile";
 
 export const metadata: Metadata = {
   title: "Tổng quan - Phúc Mỹ Sơn",
@@ -66,11 +67,11 @@ export default function OverviewPage() {
 
           <hr className="my-10 text-gray-400" />
 
-          <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-md flex flex-col lg:flex-row items-stretch mb-16 transform transition-all duration-300 hover:shadow-lg">
+          <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-md flex flex-col lg:flex-row items-stretch mb-16 transition-all duration-300 hover:shadow-lg">
             <div className="lg:w-1/2 relative min-h-[300px] lg:min-h-[460px] bg-slate-100 flex-shrink-0">
               <img
                 src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&q=80&w=800"
-                alt="PMS TCC Corporate Headquarters Render representation"
+                alt="PMS TCC Corporate Headquarters"
                 className="absolute inset-0 w-full h-full object-cover select-none"
               />
               <div className="absolute inset-0 bg-emerald-950/10 mix-blend-multiply" />
@@ -82,7 +83,6 @@ export default function OverviewPage() {
                   <span className="sm:col-span-3 font-bold tracking-tight text-sm sm:text-base">Tên đầy đủ:</span>
                   <span className="sm:col-span-9 leading-relaxed uppercase">CÔNG TY CỔ PHẦN TƯ VẤN XÂY DỰNG THƯƠNG MẠI PHÚC MỸ SƠN</span>
                 </div>
-
                 <div className="grid grid-cols-1 sm:grid-cols-12 gap-y-1 sm:gap-x-4 pb-3.5 border-b border-gray-200 items-baseline">
                   <span className="sm:col-span-3 font-bold tracking-tight text-sm sm:text-base">Tên viết tắt:</span>
                   <span className="sm:col-span-9">PMS TCC</span>
@@ -91,21 +91,18 @@ export default function OverviewPage() {
                   <span className="sm:col-span-3 font-bold tracking-tight text-sm sm:text-base">Mã số thuế:</span>
                   <span className="sm:col-span-9">0303282829</span>
                 </div>
-
                 <div className="grid grid-cols-1 sm:grid-cols-12 gap-y-1 sm:gap-x-4 pb-3.5 border-b border-gray-200 items-baseline">
                   <span className="sm:col-span-3 font-bold tracking-tight text-sm sm:text-base">Địa chỉ:</span>
                   <span className="sm:col-span-9">
                     28 đường số 16, Khu phố 5, Phường Hiệp Bình Chánh, Thành Phố Thủ Đức, TP. Hồ Chí Minh, Việt Nam
                   </span>
                 </div>
-
                 <div className="grid grid-cols-1 sm:grid-cols-12 gap-y-1 sm:gap-x-4 pb-3.5 border-b border-gray-200 items-baseline">
                   <span className="sm:col-span-3 font-bold tracking-tight text-sm sm:text-base">Điện thoại:</span>
                   <span className="sm:col-span-9">
-                    028.3511.4395 <span className="mx-2">|</span> 035.440.8547{" "}
+                    028.3511.4395 <span className="mx-2">|</span> 035.440.8547
                   </span>
                 </div>
-
                 <div className="grid grid-cols-1 sm:grid-cols-12 gap-y-1 sm:gap-x-4 pb-3.5 border-b border-gray-200 items-baseline">
                   <span className="sm:col-span-3 font-bold tracking-tight text-sm sm:text-base">Website:</span>
                   <span className="sm:col-span-9 hover:underline cursor-pointer">pmstcc.vn</span>
@@ -117,6 +114,8 @@ export default function OverviewPage() {
               </div>
             </div>
           </div>
+
+          <CapacityProfile />
         </div>
       </section>
     </main>
