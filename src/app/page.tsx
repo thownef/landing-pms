@@ -115,7 +115,7 @@ export default function Home() {
             <h2 className="mt-4 text-3xl font-extrabold uppercase text-emerald-950 sm:text-4xl">
               Đối Tác Chiến Lược Của Các Dự Án Năng Lượng &amp; Thí Nghiệm Trọng Điểm
             </h2>
-            <p className="mt-6 text-base leading-8 text-slate-600">
+            <p className="mt-6 text-base leading-8 text-black">
               Với phương châm &quot;Xây vững niềm tin - Dựng uy tín vàng&quot;, PMS TCC cam kết cung cấp dịch vụ tư vấn giám sát, thiết kế
               và thí nghiệm chuyên sâu, mang lại độ chính xác tuyệt đối và giá trị bền vững cho từng công trình.
             </p>
@@ -158,7 +158,7 @@ export default function Home() {
                   </div>
                   <h3 className="text-lg font-black text-emerald-950 uppercase tracking-tight leading-snug">Tính Độc Lập Khách Quan</h3>
                 </div>
-                <p className="text-sm leading-relaxed font-light">
+                <p className="text-sm leading-relaxed">
                   Chúng tôi hiểu rõ giá trị cốt lõi của kết quả thí nghiệm đo lường. Phòng LAB mã số LAS-XD 763 cam kết 100% dữ liệu thử phá hủy bê
                   tông cốt móng hay siêu âm kéo thép đều được tiến hành chuẩn chỉnh, không thỏa hiệp.
                 </p>
@@ -177,7 +177,7 @@ export default function Home() {
                   </div>
                   <h3 className="text-lg font-black text-emerald-950 uppercase tracking-tight leading-snug">Kỹ Thuật Thực Chiến</h3>
                 </div>
-                <p className="text-sm text-slate-600 leading-relaxed font-light">
+                <p className="text-sm leading-relaxed">
                   Quy tụ những Chuyên gia đầu ngành thiết kế móng mác cao, tư vấn giám sát kết cấu móng tuabin sâu dưới biển hay trạm biến
                   áp cực kỳ phức tạp. PMS-TCC không bán lý thuyết suông; chúng tôi giải quyết bài toán thực địa.
                 </p>
@@ -196,7 +196,7 @@ export default function Home() {
                   </div>
                   <h3 className="text-lg font-black text-emerald-950 uppercase tracking-tight leading-snug">Minh Bạch Pháp Lý</h3>
                 </div>
-                <p className="text-sm text-slate-600 leading-relaxed font-light">
+                <p className="text-sm leading-relaxed">
                   Mọi kết quả đều đi kèm chữ ký pháp lý cùng dấu mộc đỏ được cơ quan chức năng công nhận chính thức trên toàn quốc. Chúng
                   tôi số hóa và báo cáo tiến trình thực trạng nén cọc móng nhanh qua nền tảng giúp chủ đầu tư an tâm.
                 </p>
@@ -214,30 +214,70 @@ export default function Home() {
           <div className="text-center max-w-3xl mx-auto mb-12">
             <span className="text-xs font-bold tracking-widest text-emerald-800 uppercase bg-emerald-50 px-3 py-1 rounded">Quy Trình Chuyên Nghiệp</span>
             <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-emerald-950 uppercase mt-3">Phương Thức Phối Hợp Kỹ Thuật</h2>
-            <p className="text-xs text-gray-500 mt-2">Sự nhịp nhàng từ hiện trường đến báo cáo lý tính số hóa, bảo mật tối đa cho chủ dự án.</p>
+            <p className="text-xs text-black mt-2">Sự nhịp nhàng từ hiện trường đến báo cáo lý tính số hóa, bảo mật tối đa cho chủ dự án.</p>
             <div className="w-12 h-0.5 bg-amber-400 mx-auto mt-4 rounded-full" />
           </div>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-6 relative">
             <div className="absolute top-[38px] left-[10%] right-[10%] h-[2px] bg-emerald-200 hidden md:block z-0" />
             <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm z-10 hover:border-emerald-300 transition-all">
               <span className="text-2xl font-black text-amber-500">01</span>
-              <h4 className="text-xs font-bold text-emerald-900 uppercase tracking-widest mt-2">Kháo Sát Mẫu Thử</h4>
-              <p className="text-xs text-gray-600 font-light mt-2 leading-relaxed">Lấy mẫu tại chỗ ở hiện trường móng cột tuabin gió, hoặc đăng ký nhận mẫu bê tông cốt đúc từ công trường chuyển về phòng LAB chuyên sâu.</p>
+              <h4 className="text-sm font-bold text-emerald-900 uppercase tracking-widest mt-2">Kháo Sát Mẫu Thử</h4>
+              <p className="text-sm text-black mt-2 leading-relaxed">Lấy mẫu tại chỗ ở hiện trường móng cột tuabin gió, hoặc đăng ký nhận mẫu bê tông cốt đúc từ công trường chuyển về phòng LAB chuyên sâu.</p>
             </div>
             <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm z-10 hover:border-emerald-300 transition-all">
               <span className="text-2xl font-black text-amber-500">02</span>
-              <h4 className="text-xs font-bold text-emerald-900 uppercase tracking-widest mt-2">Thực Thí Vật Lý</h4>
-              <p className="text-xs text-gray-600 font-light mt-2 leading-relaxed">Tiến hành gia tải đỉnh nén phá hủy bê tông cốt nguội bằng WA-1000B, siêu âm xung sóng cọc khoan, đo điện tích điện trở của hệ thu lôi.</p>
+              <h4 className="text-sm font-bold text-emerald-900 uppercase tracking-widest mt-2">Thực Thí Vật Lý</h4>
+              <p className="text-sm text-black mt-2 leading-relaxed">Tiến hành gia tải đỉnh nén phá hủy bê tông cốt nguội bằng WA-1000B, siêu âm xung sóng cọc khoan, đo điện tích điện trở của hệ thu lôi.</p>
             </div>
             <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm z-10 hover:border-emerald-300 transition-all">
               <span className="text-2xl font-black text-amber-500">03</span>
-              <h4 className="text-xs font-bold text-emerald-900 uppercase tracking-widest mt-2">Lập Kết Luận Pháp Lý</h4>
-              <p className="text-xs text-gray-600 font-light mt-2 leading-relaxed">Đội ngũ Thạc sĩ kiểm soát và biên soạn bộ chỉ số cơ lý theo đúng tiêu chuẩn hành pháp của Sở Xây Dựng và Bộ Công Thương quốc gia.</p>
+              <h4 className="text-sm font-bold text-emerald-900 uppercase tracking-widest mt-2">Lập Kết Luận Pháp Lý</h4>
+              <p className="text-sm text-black mt-2 leading-relaxed">Đội ngũ Thạc sĩ kiểm soát và biên soạn bộ chỉ số cơ lý theo đúng tiêu chuẩn hành pháp của Sở Xây Dựng và Bộ Công Thương quốc gia.</p>
             </div>
             <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm z-10 hover:border-emerald-300 transition-all">
               <span className="text-2xl font-black text-amber-500">04</span>
-              <h4 className="text-xs font-bold text-emerald-900 uppercase tracking-widest mt-2">Cấp Phê Duyệt</h4>
-              <p className="text-xs text-gray-600 font-light mt-2 leading-relaxed">Bàn giao tận tay hồ sơ kết luận gốc có mộc đỏ hợp thức hóa toàn bộ quá trình thanh toán giải ngân đầu tư của dự án với ngân hàng.</p>
+              <h4 className="text-sm font-bold text-emerald-900 uppercase tracking-widest mt-2">Cấp Phê Duyệt</h4>
+              <p className="text-sm text-black mt-2 leading-relaxed">Bàn giao tận tay hồ sơ kết luận gốc có mộc đỏ hợp thức hóa toàn bộ quá trình thanh toán giải ngân đầu tư của dự án với ngân hàng.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Cam kết chất lượng */}
+      <section className="py-16 bg-white border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 md:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-10">
+            <span className="text-xs font-bold tracking-widest text-emerald-800 uppercase bg-emerald-50 px-3 py-1 rounded">Cam Kết Dịch Vụ</span>
+            <h2 className="text-2xl sm:text-3xl font-black tracking-tight text-emerald-950 uppercase mt-3">Giá Trị Cốt Lõi Chúng Tôi Mang Lại</h2>
+            <div className="w-12 h-0.5 bg-amber-400 mx-auto mt-4 rounded-full" />
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="flex items-start gap-4 p-6 rounded-2xl border border-gray-200 bg-white hover:border-emerald-300 hover:shadow-md transition-all">
+              <div className="shrink-0 w-10 h-10 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center">
+                <Check className="w-5 h-5 text-emerald-600" strokeWidth={2.5} />
+              </div>
+              <div>
+                <h3 className="text-sm font-black text-emerald-950 uppercase tracking-tight">Chính Xác &amp; Khách Quan</h3>
+                <p className="text-sm text-black mt-2 leading-relaxed">Toàn bộ dữ liệu thí nghiệm, mẫu đúc bê tông xi măng được thực hiện đúng quy trình tiêu chuẩn hiện hành nghiêm ngặt.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4 p-6 rounded-2xl border border-gray-200 bg-white hover:border-emerald-300 hover:shadow-md transition-all">
+              <div className="shrink-0 w-10 h-10 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center">
+                <Check className="w-5 h-5 text-emerald-600" strokeWidth={2.5} />
+              </div>
+              <div>
+                <h3 className="text-sm font-black text-emerald-950 uppercase tracking-tight">Nhân Sự Bản Lĩnh Chuyên Môn</h3>
+                <p className="text-sm text-black mt-2 leading-relaxed">Sở hữu những kỹ sư điện truyền tải 36–43 năm kinh nghiệm thực tiễn tại các TBA siêu cao áp khó nhất.</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-4 p-6 rounded-2xl border border-gray-200 bg-white hover:border-emerald-300 hover:shadow-md transition-all">
+              <div className="shrink-0 w-10 h-10 rounded-full bg-emerald-50 border border-emerald-200 flex items-center justify-center">
+                <Check className="w-5 h-5 text-emerald-600" strokeWidth={2.5} />
+              </div>
+              <div>
+                <h3 className="text-sm font-black text-emerald-950 uppercase tracking-tight">Vững Tiến Độ Công Trình</h3>
+                <p className="text-sm text-black mt-2 leading-relaxed">Cam kết kết quả thí nghiệm nền nứt móng và giám sát an toàn được triển khai nhanh chóng bảo vệ quỹ thời gian vàng.</p>
+              </div>
             </div>
           </div>
         </div>

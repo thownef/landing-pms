@@ -46,8 +46,8 @@ export function ServiceTabNav({ active, onChange }: ServiceTabNavProps) {
             }`}
           >
             <Icon className={`w-6 h-6 mb-2 ${isActive ? "text-amber-300 animate-pulse" : "text-[#1e4e8c]"}`} />
-            <span className="text-xs sm:text-[13px] font-black uppercase tracking-wider block">{label}</span>
-            <span className={`text-[10px] mt-1 block font-medium ${isActive ? "text-blue-100" : "text-gray-400"}`}>{sub}</span>
+            <span className="text-base sm:text-sm font-black uppercase tracking-wider block">{label}</span>
+            <span className={`text-xs mt-1 block font-medium ${isActive ? "text-blue-100" : "text-gray-400"}`}>{sub}</span>
           </button>
         );
       })}

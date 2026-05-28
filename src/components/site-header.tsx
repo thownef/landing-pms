@@ -1,29 +1,13 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { LanguageSwitcher } from "@/components/LanguageSwitcher";
+import { useLanguage } from "@/lib/LanguageContext";
+import type { TranslationPath } from "@/lib/translations";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Mail, MapPin, Menu, Phone, ShieldCheck, X } from "lucide-react";
 import { useEffect, useState } from "react";
-
-const aboutItems = [
-  { label: "Tổng quan", href: "/about-us/overview" },
-  { label: "Thông điệp ban lãnh đạo", href: "/about-us/leadership-message" },
-  { label: "Tầm nhìn, giá trị cốt lõi", href: "/about-us/vision-core-values" },
-  { label: "Ban lãnh đạo", href: "/about-us/leadership" },
-  { label: "Khách hàng và đối tác", href: "/about-us/clients-partners" },
-  { label: "Hồ sơ năng lực", href: "/about-us/company-profile" },
-];
-
-const navItems = [
-  { label: "Trang chủ", href: "/" },
-  { label: "Về chúng tôi", href: "/about-us", children: aboutItems },
-  { label: "Dịch vụ", href: "/services" },
-  { label: "Dự án", href: "/projects" },
-  { label: "Tin tức", href: "/news" },
-  { label: "Tuyển dụng", href: "/careers" },
-  { label: "Liên hệ", href: "/contact" },
-];
 
 function isActivePath(pathname: string, href: string) {
   if (href === "/") {
@@ -33,12 +17,41 @@ function isActivePath(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
+const aboutItemsConfig = [
+  { labelKey: "aboutSubmenu.overview", href: "/about-us/overview" },
+  { labelKey: "aboutSubmenu.leadershipMessage", href: "/about-us/leadership-message" },
+  { labelKey: "aboutSubmenu.visionValues", href: "/about-us/vision-core-values" },
+  { labelKey: "aboutSubmenu.leadership", href: "/about-us/leadership" },
+  { labelKey: "aboutSubmenu.clientsPartners", href: "/about-us/clients-partners" },
+  { labelKey: "aboutSubmenu.companyProfile", href: "/assets/files/20261002_HSNL_PMS.pdf", external: true },
+] satisfies Array<{ labelKey: TranslationPath; href: string; external?: boolean }>;
+
+const navItemsConfig = [
+  { labelKey: "nav.home", href: "/" },
+  { labelKey: "nav.aboutUs", href: "/about-us", children: aboutItemsConfig },
+  { labelKey: "nav.services", href: "/services" },
+  { labelKey: "nav.projects", href: "/projects" },
+  { labelKey: "nav.news", href: "/news" },
+  { labelKey: "nav.careers", href: "/careers" },
+  { labelKey: "nav.contact", href: "/contact" },
+] satisfies Array<{ labelKey: TranslationPath; href: string; children?: typeof aboutItemsConfig }>;
+
 export function SiteHeader() {
   const pathname = usePathname();
+  const { t } = useLanguage();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileAboutOpen, setMobileAboutOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+
+  const navItems = navItemsConfig.map((item) => ({
+    ...item,
+    label: t(item.labelKey),
+    children: item.children?.map((child) => ({
+      ...child,
+      label: t(child.labelKey),
+    })),
+  }));
 
   const [prevPathname, setPrevPathname] = useState(pathname);
 
@@ -105,22 +118,15 @@ export function SiteHeader() {
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 md:px-6 lg:px-8">
           <Link href="/" className="group flex select-none items-center space-x-3">
-            <div className="relative flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-amber-200 bg-amber-50 shadow-sm transition-transform duration-300 group-hover:scale-105">
-              <div className="absolute h-9 w-9 animate-[spin_50s_linear_infinite] rounded-full border-2 border-dashed border-amber-400" />
-              <div className="flex flex-col items-center text-[14px] font-extrabold leading-none tracking-tighter text-emerald-800">
-                <span className="-mb-0.5 text-[10px] text-amber-500">☀</span>
-                <span className="font-black tracking-tight">PMS</span>
-                <span className="text-[7px] font-medium text-[#098a58]">TCC</span>
-              </div>
+            <div className="relative flex h-16 w-16 shrink-0 items-center justify-center">
+              <Image src="/assets/img/pms_logo.png" alt="PMS TCC Logo" width={64} height={64} className="object-contain" priority />
             </div>
 
             <div className="flex flex-col">
               <span className="text-sm font-extrabold uppercase leading-none tracking-tight text-emerald-950 transition-colors group-hover:text-[#098a58] md:text-base">
                 Phúc Mỹ Sơn
               </span>
-              <span className="mt-1 text-[9px] font-semibold uppercase tracking-wider text-[#098a58]">
-                Tư vấn xây dựng &amp; năng lượng
-              </span>
+              <span className="mt-1 text-[9px] font-semibold uppercase tracking-wider text-[#098a58]">{t("header.tagline")}</span>
               <span className="hidden text-[8px] font-mono text-amber-600 sm:block">LAS-XD HCM.017</span>
             </div>
           </Link>
@@ -131,47 +137,61 @@ export function SiteHeader() {
 
               if (item.children) {
                 return (
-                    <div
-                      key={item.href}
-                      className="relative"
-                      onMouseEnter={() => setOpenDropdown(item.label)}
-                      onMouseLeave={() => setOpenDropdown(null)}
+                  <div
+                    key={item.href}
+                    className="relative"
+                    onMouseEnter={() => setOpenDropdown(item.label)}
+                    onMouseLeave={() => setOpenDropdown(null)}
+                  >
+                    <button
+                      type="button"
+                      onClick={() => setOpenDropdown(openDropdown === item.label ? null : item.label)}
+                      className={`inline-flex items-center gap-1 rounded-md px-3 py-2 text-base font-semibold transition-all duration-200 ${
+                        isActive
+                          ? "border-b-2 border-[#098a58] bg-[#098a58]/8 text-emerald-950"
+                          : "text-gray-600 hover:bg-gray-50 hover:text-emerald-950"
+                      }`}
                     >
-                      <button
-                        type="button"
-                        onClick={() => setOpenDropdown(openDropdown === item.label ? null : item.label)}
-                        className={`inline-flex items-center gap-1 rounded-md px-3 py-2 text-base font-semibold transition-all duration-200 ${
-                          isActive
-                            ? "border-b-2 border-[#098a58] bg-[#098a58]/8 text-emerald-950"
-                            : "text-gray-600 hover:bg-gray-50 hover:text-emerald-950"
-                        }`}
-                      >
-                        {item.label}
-                        <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${openDropdown === item.label ? "rotate-180" : ""}`} strokeWidth={2} />
-                      </button>
-                      {openDropdown === item.label && (
-                        <div className="absolute left-1/2 top-full w-[310px] -translate-x-1/2 pt-3 z-50">
-                          <div className="overflow-hidden rounded-md border border-[#098a58]/10 bg-white shadow-xl shadow-slate-950/10 animate-in fade-in zoom-in-95 duration-200">
-                            {item.children.map((child) => {
-                              const childActive = isActivePath(pathname, child.href);
+                      {item.label}
+                      <ChevronDown
+                        className={`h-4 w-4 transition-transform duration-200 ${openDropdown === item.label ? "rotate-180" : ""}`}
+                        strokeWidth={2}
+                      />
+                    </button>
+                    {openDropdown === item.label && (
+                      <div className="absolute left-1/2 top-full w-[310px] -translate-x-1/2 pt-3 z-50">
+                        <div className="overflow-hidden rounded-md border border-[#098a58]/10 bg-white shadow-xl shadow-slate-950/10 animate-in fade-in zoom-in-95 duration-200">
+                          {item.children.map((child) => {
+                            const childActive = isActivePath(pathname, child.href);
 
-                              return (
-                                <Link
-                                  key={child.href}
-                                  href={child.href}
-                                  onClick={() => setOpenDropdown(null)}
-                                  className={`block border-b border-slate-100 px-4 py-3 text-sm font-semibold last:border-b-0 ${
-                                    childActive ? "bg-[#098a58]/8 text-[#098a58]" : "text-gray-700 hover:bg-gray-50 hover:text-[#098a58]"
-                                  }`}
-                                >
-                                  {child.label}
-                                </Link>
-                              );
-                            })}
-                          </div>
+                            return child.external ? (
+                              <a
+                                key={child.href}
+                                href={child.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                onClick={() => setOpenDropdown(null)}
+                                className="block border-b border-slate-100 px-4 py-3 text-sm font-semibold last:border-b-0 text-gray-700 hover:bg-gray-50 hover:text-[#098a58]"
+                              >
+                                {child.label}
+                              </a>
+                            ) : (
+                              <Link
+                                key={child.href}
+                                href={child.href}
+                                onClick={() => setOpenDropdown(null)}
+                                className={`block border-b border-slate-100 px-4 py-3 text-sm font-semibold last:border-b-0 ${
+                                  childActive ? "bg-[#098a58]/8 text-[#098a58]" : "text-gray-700 hover:bg-gray-50 hover:text-[#098a58]"
+                                }`}
+                              >
+                                {child.label}
+                              </Link>
+                            );
+                          })}
                         </div>
-                      )}
-                    </div>
+                      </div>
+                    )}
+                  </div>
                 );
               }
 
@@ -248,23 +268,39 @@ export function SiteHeader() {
                   )}
                   {item.children && (mobileAboutOpen || isActive) && (
                     <div className="ml-4 mt-1 space-y-1 border-l border-slate-100 pl-3">
-                      {item.children.map((child) => (
-                        <Link
-                          key={child.href}
-                          href={child.href}
-                          onClick={() => {
-                            setMobileMenuOpen(false);
-                            setMobileAboutOpen(false);
-                          }}
-                          className={`block rounded px-3 py-2 text-sm ${
-                            isActivePath(pathname, child.href)
-                              ? "bg-[#098a58]/8 font-semibold text-[#098a58]"
-                              : "text-gray-600 hover:bg-gray-50"
-                          }`}
-                        >
-                          {child.label}
-                        </Link>
-                      ))}
+                      {item.children.map((child) =>
+                        child.external ? (
+                          <a
+                            key={child.href}
+                            href={child.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={() => {
+                              setMobileMenuOpen(false);
+                              setMobileAboutOpen(false);
+                            }}
+                            className="block rounded px-3 py-2 text-sm text-gray-600 hover:bg-gray-50 hover:text-[#098a58]"
+                          >
+                            {child.label}
+                          </a>
+                        ) : (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            onClick={() => {
+                              setMobileMenuOpen(false);
+                              setMobileAboutOpen(false);
+                            }}
+                            className={`block rounded px-3 py-2 text-sm ${
+                              isActivePath(pathname, child.href)
+                                ? "bg-[#098a58]/8 font-semibold text-[#098a58]"
+                                : "text-gray-600 hover:bg-gray-50"
+                            }`}
+                          >
+                            {child.label}
+                          </Link>
+                        ),
+                      )}
                     </div>
                   )}
                 </div>
@@ -287,7 +323,7 @@ export function SiteHeader() {
                 onClick={() => setMobileMenuOpen(false)}
                 className="w-full rounded bg-[#098a58] py-3 text-center text-base font-bold text-white hover:bg-[#08794d]"
               >
-                Liên hệ ngay
+                {t("header.contactNow")}
               </Link>
             </div>
           </div>

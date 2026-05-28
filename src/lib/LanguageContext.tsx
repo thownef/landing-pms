@@ -1,21 +1,20 @@
 "use client";
 
 import { createContext, useContext, useState, type ReactNode } from "react";
-
-export type Language = "vi" | "en";
+import { getTranslation, type Language, type TranslationPath } from "@/lib/translations";
 
 const STORAGE_KEY = "pms_lang";
 
 interface LanguageContextValue {
-  lang: Language;
-  setLang: (lang: Language) => void;
-  t: (vi: string, en: string) => string;
+  language: Language;
+  setLanguage: (lang: Language) => void;
+  t: (path: TranslationPath) => string;
 }
 
 const LanguageContext = createContext<LanguageContextValue>({
-  lang: "vi",
-  setLang: () => {},
-  t: (vi) => vi,
+  language: "vi",
+  setLanguage: () => {},
+  t: () => "",
 });
 
 function getInitialLang(): Language {
@@ -25,17 +24,17 @@ function getInitialLang(): Language {
 }
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<Language>(getInitialLang);
+  const [language, setLanguageState] = useState<Language>(getInitialLang);
 
-  const setLang = (next: Language) => {
-    setLangState(next);
+  const setLanguage = (next: Language) => {
+    setLanguageState(next);
     localStorage.setItem(STORAGE_KEY, next);
   };
 
-  const t = (vi: string, en: string) => (lang === "vi" ? vi : en);
+  const t = (path: TranslationPath) => getTranslation(path, language);
 
   return (
-    <LanguageContext.Provider value={{ lang, setLang, t }}>
+    <LanguageContext.Provider value={{ language, setLanguage, t }}>
       {children}
     </LanguageContext.Provider>
   );

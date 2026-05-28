@@ -13,7 +13,7 @@ const CapacityProfile = () => {
   };
 
   return (
-    <div className="mt-20 border-t border-gray-200 pt-16">
+    <div className="mt-20">
       <div className="flex flex-col items-center justify-center max-w-xl mx-auto bg-gradient-to-br from-slate-50 to-slate-100 p-8 sm:p-12 rounded-2xl border border-gray-200 shadow-sm text-center">
         <a
           href="/assets/files/20261002_HSNL_PMS.pdf"
@@ -27,7 +27,7 @@ const CapacityProfile = () => {
 
             <div className="flex flex-col items-center mt-6 space-y-1">
               <img
-                src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=405"
+                src="/assets/img/pms_logo.png"
                 alt="Logo PMS TCC"
                 className="w-14 h-14 rounded- object-contain"
               />
@@ -42,7 +42,6 @@ const CapacityProfile = () => {
                 className="w-full h-full object-cover brightness-95"
               />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-emerald-950/85 via-emerald-950/45 to-transparent p-3 flex flex-col items-center text-center">
-                <span className="text-[14px] text-white font-black tracking-widest uppercase">PMS TCC</span>
               </div>
             </div>
 
