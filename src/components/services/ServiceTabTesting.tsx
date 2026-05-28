@@ -96,7 +96,7 @@ export function ServiceTabTesting({ onDownload }: ServiceTabTestingProps) {
                 {PROJECTS.map((row, idx) => (
                   <tr key={idx} className="hover:bg-slate-50/80 transition-colors">
                     <td className="text-sm px-4 py-3 font-extrabold text-emerald-950 max-w-[200px] leading-tight text-left">{row.name}</td>
-                    <td className="text-sm px-3 py-3 text-gray-600 font-light leading-relaxed text-left">{row.work}</td>
+                    <td className="text-sm px-3 py-3 text-gray-600 leading-relaxed text-left">{row.work}</td>
                     <td className="text-sm px-3 py-3 text-center whitespace-nowrap">
                       <span className="text-sm inline-flex px-2 py-0.5 bg-emerald-50 text-emerald-800 border border-emerald-200 rounded font-bold">
                         {row.status}
