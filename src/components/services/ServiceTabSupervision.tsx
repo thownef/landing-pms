@@ -4,11 +4,11 @@ import { BookOpen } from "lucide-react";
 import { ServiceDocList, type DocItem } from "./ServiceDocList";
 
 const DOCS: DocItem[] = [
-  { name: "Giấy đăng ký kinh doanh & Thẻ khai thuế", size: "1.2 MB", type: "PDF" },
-  { name: "Giấy chứng nhận Hệ thống Quản Lý Chất Lượng tiêu chuẩn ISO 9001:2015", size: "2.8 MB", type: "PDF_VERIFIED" },
-  { name: "Chứng chỉ hoạt động năng lực hoạt động xây dựng Hạng I, II, III", size: "5.4 MB", type: "PDF_PRO" },
+  { name: "Giấy đăng ký kinh doanh", size: "1.2 MB", type: "PDF" },
+  { name: "Giấy chứng nhận ISO", size: "2.8 MB", type: "PDF" },
+  { name: "Chứng chỉ hoạt động năng lực hoạt động xây dựng Hạng I, II, III", size: "5.4 MB", type: "PDF" },
   { name: "Danh sách đội ngũ nhân sự giám sát trưởng + Bằng cấp hành nghề Bộ Xây dựng", size: "3.7 MB", type: "PDF" },
-  { name: "Hồ sơ năng lực (Capacity Profile) Chuyên ngành Giám sát kỹ thuật", size: "8.4 MB", type: "PDF_PRO" },
+  { name: "Hồ sơ năng lực", size: "8.4 MB", type: "PDF" },
 ];
 
 const PROJECTS = [
