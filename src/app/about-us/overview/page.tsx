@@ -77,7 +77,7 @@ export default function OverviewPage() {
             </div>
 
             <div className="lg:w-1/2 p-6 sm:p-10 flex flex-col justify-center bg-white text-left">
-              <div className="space-y-4">
+              <div className="space-y-4 text-black">
                 <div className="grid grid-cols-1 sm:grid-cols-12 gap-y-1 sm:gap-x-4 pb-3.5 border-b border-gray-200 items-baseline">
                   <span className="sm:col-span-3 font-bold tracking-tight text-sm sm:text-base">Tên đầy đủ:</span>
                   <span className="sm:col-span-9 leading-relaxed uppercase">CÔNG TY CỔ PHẦN TƯ VẤN XÂY DỰNG THƯƠNG MẠI PHÚC MỸ SƠN</span>
