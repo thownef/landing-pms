@@ -11,12 +11,11 @@ export interface DocItem {
 
 interface ServiceDocListProps {
   title: string;
-  subtitle: string;
   docs: DocItem[];
   onDownload: (name: string) => void;
 }
 
-export function ServiceDocList({ title, subtitle, docs, onDownload }: ServiceDocListProps) {
+export function ServiceDocList({ title, docs, onDownload }: ServiceDocListProps) {
   const handleView = (doc: DocItem) => {
     if (doc.url) {
       window.open(doc.url, "_blank", "noopener,noreferrer");
@@ -40,9 +39,8 @@ export function ServiceDocList({ title, subtitle, docs, onDownload }: ServiceDoc
     <div className="space-y-4">
       <div className="flex items-center space-x-2">
         <Layers className="w-4 h-4 text-[#1e4e8c]" />
-        <h4 className="text-xs font-bold uppercase tracking-widest text-emerald-950">{title}</h4>
+        <h4 className="text-base font-bold uppercase tracking-widest text-emerald-950">{title}</h4>
       </div>
-      <p className="text-[11px] text-gray-500 italic pb-1">{subtitle}</p>
       <div className="space-y-2">
         {docs.map((doc, idx) => (
           <div
@@ -54,8 +52,8 @@ export function ServiceDocList({ title, subtitle, docs, onDownload }: ServiceDoc
                 <FileText className="w-4 h-4" />
               </div>
               <div>
-                <span className="text-xs font-extrabold text-emerald-950 block leading-tight">{doc.name}</span>
-                <span className="text-[9px] text-[#1e4e8c] leading-none mt-1 inline-block bg-blue-50 px-1.5 py-0.5 rounded font-bold">
+                <span className="text-sm font-extrabold text-emerald-950 block leading-tight">{doc.name}</span>
+                <span className="text-xs text-[#1e4e8c] leading-none mt-1 inline-block bg-blue-50 px-1.5 py-0.5 rounded font-bold">
                   {doc.size} • {doc.type.split("_")[0]}
                 </span>
               </div>

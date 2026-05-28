@@ -4,11 +4,13 @@ import { BookOpen } from "lucide-react";
 import { ServiceDocList, type DocItem } from "./ServiceDocList";
 
 const DOCS: DocItem[] = [
-  { name: "Giấy đăng ký kinh doanh", size: "1.2 MB", type: "PDF" },
-  { name: "Giấy chứng nhận ISO", size: "2.8 MB", type: "PDF" },
-  { name: "Chứng chỉ hoạt động năng lực hoạt động xây dựng Hạng I, II, III", size: "5.4 MB", type: "PDF" },
-  { name: "Danh sách đội ngũ nhân sự giám sát trưởng + Bằng cấp hành nghề Bộ Xây dựng", size: "3.7 MB", type: "PDF" },
-  { name: "Hồ sơ năng lực", size: "8.4 MB", type: "PDF" },
+  { name: "Giấy đăng ký kinh doanh", size: "1.2 MB", type: "PDF", url: "/assets/files/QAQC/GPKD%20PMS%20L13%20(2023).pdf" },
+  { name: "Giấy chứng nhận ISO", size: "2.8 MB", type: "PDF", url: "/assets/files/QAQC/GiayChungNhanISO.pdf" },
+  { name: "Chứng chỉ hành nghề hoạt động xây dựng Hạng I", size: "1.8 MB", type: "PDF", url: "/assets/files/QAQC/1.%20H%C4%90XD%20PMS%20H%E1%BA%A0NG%20I.pdf" },
+  { name: "Chứng chỉ hành nghề hoạt động xây dựng Hạng II", size: "1.8 MB", type: "PDF", url: "/assets/files/QAQC/2.%20H%C4%90XD%20PMS%20H%E1%BA%A0NG%20II.pdf" },
+  { name: "Chứng chỉ hành nghề hoạt động xây dựng Hạng III", size: "1.8 MB", type: "PDF", url: "/assets/files/QAQC/2.%20H%C4%90XD%20PMS%20H%E1%BA%A0NG%20III.pdf" },
+  { name: "Danh sách nhân sự", size: "3.7 MB", type: "PDF", url: "/assets/files/QAQC/DanhSachNhanSu_TVGS_PMS.pdf" },
+  { name: "Hồ sơ năng lực", size: "8.4 MB", type: "PDF", url: "/assets/files/QAQC/HSNL%20TVGS%20TK%20PMS%202026%20-%20VI.pdf" },
 ];
 
 const PROJECTS = [
@@ -60,9 +62,6 @@ export function ServiceTabSupervision({ onDownload }: ServiceTabSupervisionProps
             alt="Công sỹ thực địa thi công"
             className="w-full h-72 object-cover transform duration-500 group-hover:scale-105"
           />
-          <div className="absolute bottom-3 left-3 bg-emerald-950/90 text-amber-300 text-[10px] uppercase font-bold px-2.5 py-1 rounded">
-            SUPERINTENDENT SITE
-          </div>
         </div>
       </div>
 
@@ -71,7 +70,6 @@ export function ServiceTabSupervision({ onDownload }: ServiceTabSupervisionProps
         <div className="lg:col-span-5">
           <ServiceDocList
             title="Văn Bản Pháp Lý & Chứng Chỉ Sát Hạch"
-            subtitle="Hồ sơ năng lực pháp lý mộc đỏ đã được scan định dạng nén mật độ cao:"
             docs={DOCS}
             onDownload={onDownload}
           />
@@ -80,11 +78,8 @@ export function ServiceTabSupervision({ onDownload }: ServiceTabSupervisionProps
         <div className="lg:col-span-7 space-y-4">
           <div className="flex items-center space-x-2">
             <BookOpen className="w-4 h-4 text-[#1e4e8c]" />
-            <h4 className="text-xs font-bold uppercase tracking-widest text-emerald-950">Công Trình Giám Sát Tiêu Biểu</h4>
+            <h4 className="text-sm font-bold uppercase tracking-widest text-emerald-950">Công Trình Giám Sát Tiêu Biểu</h4>
           </div>
-          <p className="text-[11px] text-gray-500 italic pb-1">
-            Các dự án quy mô đã được thực hành giám sát kỹ thuật, bám sát an toàn chất lượng:
-          </p>
           <div className="overflow-x-auto rounded-xl border border-gray-200">
             <table className="min-w-full divide-y divide-gray-200 text-xs">
               <thead className="bg-[#153b6c] text-white">
@@ -97,10 +92,10 @@ export function ServiceTabSupervision({ onDownload }: ServiceTabSupervisionProps
               <tbody className="bg-white divide-y divide-gray-100">
                 {PROJECTS.map((row, idx) => (
                   <tr key={idx} className="hover:bg-slate-50/80 transition-colors">
-                    <td className="px-4 py-3 font-extrabold text-emerald-950 max-w-[200px] leading-tight text-left">{row.name}</td>
-                    <td className="px-3 py-3 text-gray-600 font-light leading-relaxed text-left text-[11px]">{row.work}</td>
-                    <td className="px-3 py-3 text-center whitespace-nowrap">
-                      <span className="inline-flex px-2 py-0.5 bg-blue-50 text-[#1e4e8c] border border-blue-200 rounded text-[9px] font-bold">
+                    <td className="text-sm px-4 py-3 font-extrabold text-emerald-950 max-w-[200px] leading-tight text-left">{row.name}</td>
+                    <td className="text-sm px-3 py-3 text-gray-600 font-light leading-relaxed text-left">{row.work}</td>
+                    <td className="text-sm px-3 py-3 text-center whitespace-nowrap">
+                      <span className="inline-flex px-2 py-0.5 bg-blue-50 text-[#1e4e8c] border border-blue-200 rounded font-bold">
                         {row.status}
                       </span>
                     </td>
@@ -114,17 +109,15 @@ export function ServiceTabSupervision({ onDownload }: ServiceTabSupervisionProps
               <img
                 src="https://images.unsplash.com/photo-1466611653911-95081537e5b7?auto=format&fit=crop&q=80&w=605"
                 alt="Điện gió tại Việt Nam"
-                className="w-full h-28 object-cover brightness-95 group-hover:scale-105 transition-transform duration-300"
+                className="w-full h-48 object-cover brightness-95 group-hover:scale-105 transition-transform duration-300"
               />
-              <span className="text-[9px] text-gray-500 font-medium block p-2 bg-white text-center">Giám sát tổ hợp lắp đặt Turbine điện gió</span>
             </div>
             <div className="rounded-xl overflow-hidden border border-gray-200 shadow-sm group">
               <img
                 src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&q=80&w=605"
                 alt="Đường dây cao áp TBA"
-                className="w-full h-28 object-cover brightness-95 group-hover:scale-105 transition-transform duration-300"
+                className="w-full h-48 object-cover brightness-95 group-hover:scale-105 transition-transform duration-300"
               />
-              <span className="text-[9px] text-gray-500 font-medium block p-2 bg-white text-center">Giám sát lắp dựng kết cấu cột thép TBA</span>
             </div>
           </div>
         </div>

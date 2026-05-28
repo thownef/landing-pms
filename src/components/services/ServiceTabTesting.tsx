@@ -63,9 +63,6 @@ export function ServiceTabTesting({ onDownload }: ServiceTabTestingProps) {
             alt="Phòng thí nghiệm LAS-XD"
             className="w-full h-72 object-cover transform duration-500 group-hover:scale-105"
           />
-          <div className="absolute bottom-3 left-3 bg-emerald-950/90 text-amber-300 text-[10px] uppercase font-bold px-2.5 py-1 rounded">
-            LAS-XD HCM.017
-          </div>
         </div>
       </div>
 
@@ -74,7 +71,6 @@ export function ServiceTabTesting({ onDownload }: ServiceTabTestingProps) {
         <div className="lg:col-span-5">
           <ServiceDocList
             title="Hồ Sơ Tài Liệu Số Hóa Gốc"
-            subtitle="Nhấp vào một văn bản để xem nhanh chi tiết hoặc tải tệp PDF bản mộc đỏ đóng dầu:"
             docs={DOCS}
             onDownload={onDownload}
           />
@@ -83,13 +79,10 @@ export function ServiceTabTesting({ onDownload }: ServiceTabTestingProps) {
         <div className="lg:col-span-7 space-y-4">
           <div className="flex items-center space-x-2">
             <BookOpen className="w-4 h-4 text-[#1e4e8c]" />
-            <h4 className="text-xs font-bold uppercase tracking-widest text-emerald-950">
+            <h4 className="text-base font-bold uppercase tracking-widest text-emerald-950">
               Bảng Kê Kinh Nghiệm Thực Tế &amp; Công Trình Tiêu Biểu
             </h4>
           </div>
-          <p className="text-[11px] text-gray-500 italic pb-1">
-            Danh mục chọn lọc các công trình thí nghiệm nén mẫu bê tông &amp; kiểm hóa địa kỹ thuật:
-          </p>
           <div className="overflow-x-auto rounded-xl border border-gray-200">
             <table className="min-w-full divide-y divide-gray-200 text-xs">
               <thead className="bg-[#153b6c] text-white">
@@ -102,10 +95,10 @@ export function ServiceTabTesting({ onDownload }: ServiceTabTestingProps) {
               <tbody className="bg-white divide-y divide-gray-100">
                 {PROJECTS.map((row, idx) => (
                   <tr key={idx} className="hover:bg-slate-50/80 transition-colors">
-                    <td className="px-4 py-3 font-extrabold text-emerald-950 max-w-[200px] leading-tight text-left">{row.name}</td>
-                    <td className="px-3 py-3 text-gray-600 font-light leading-relaxed text-left text-[11px]">{row.work}</td>
-                    <td className="px-3 py-3 text-center whitespace-nowrap">
-                      <span className="inline-flex px-2 py-0.5 bg-emerald-50 text-emerald-800 border border-emerald-200 rounded text-[9px] font-bold">
+                    <td className="text-sm px-4 py-3 font-extrabold text-emerald-950 max-w-[200px] leading-tight text-left">{row.name}</td>
+                    <td className="text-sm px-3 py-3 text-gray-600 font-light leading-relaxed text-left">{row.work}</td>
+                    <td className="text-sm px-3 py-3 text-center whitespace-nowrap">
+                      <span className="text-sm inline-flex px-2 py-0.5 bg-emerald-50 text-emerald-800 border border-emerald-200 rounded font-bold">
                         {row.status}
                       </span>
                     </td>
@@ -119,17 +112,15 @@ export function ServiceTabTesting({ onDownload }: ServiceTabTestingProps) {
               <img
                 src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&q=80&w=405"
                 alt="Hiện trường bê tông móng"
-                className="w-full h-28 object-cover brightness-95 group-hover:scale-105 transition-transform duration-300"
+                className="w-full h-48 object-cover brightness-95 group-hover:scale-105 transition-transform duration-300"
               />
-              <span className="text-[9px] text-gray-500 font-medium block p-2 bg-white text-center">Cán đúc &amp; dưỡng hộ bê tông mác cao</span>
             </div>
             <div className="rounded-xl overflow-hidden border border-gray-200 shadow-sm group">
               <img
                 src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=405"
                 alt="Kiểm định cơ học máy WA-1000B"
-                className="w-full h-28 object-cover brightness-95 group-hover:scale-105 transition-transform duration-300"
+                className="w-full h-48 object-cover brightness-95 group-hover:scale-105 transition-transform duration-300"
               />
-              <span className="text-[9px] text-gray-500 font-medium block p-2 bg-white text-center">Thiết bị kéo cơ lý thép WA-1000B</span>
             </div>
           </div>
         </div>
