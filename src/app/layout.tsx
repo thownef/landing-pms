@@ -3,6 +3,7 @@ import { Roboto } from "next/font/google";
 import { FloatingActions } from "@/components/floating-actions";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { LanguageProvider } from "@/lib/LanguageContext";
 import "./globals.css";
 
 const roboto = Roboto({
@@ -24,10 +25,12 @@ export default function RootLayout({
   return (
     <html lang="vi" className={`${roboto.variable} h-full antialiased`}>
       <body className={`${roboto.className} min-h-full flex flex-col`}>
-        <SiteHeader />
-        {children}
-        <SiteFooter />
-        <FloatingActions />
+        <LanguageProvider>
+          <SiteHeader />
+          {children}
+          <SiteFooter />
+          <FloatingActions />
+        </LanguageProvider>
       </body>
     </html>
   );

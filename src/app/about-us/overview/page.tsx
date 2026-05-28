@@ -9,8 +9,7 @@ export const metadata: Metadata = {
 
 export default function OverviewPage() {
   return (
-    <main className="bg-white text-slate-900">
-      <section className="border-b border-gray-200 bg-slate-50 py-16">
+    <section className="bg-white py-16">
         <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
           <div className="mx-auto mb-16 max-w-3xl text-center">
             <div className="inline-block relative">
@@ -118,6 +117,5 @@ export default function OverviewPage() {
           <CapacityProfile />
         </div>
       </section>
-    </main>
   );
 }

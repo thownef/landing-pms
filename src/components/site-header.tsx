@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { LanguageSwitcher } from "@/components/LanguageSwitcher";
 import { usePathname } from "next/navigation";
 import { ChevronDown, Mail, MapPin, Menu, Phone, ShieldCheck, X } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -17,7 +18,7 @@ const aboutItems = [
 const navItems = [
   { label: "Trang chủ", href: "/" },
   { label: "Về chúng tôi", href: "/about-us", children: aboutItems },
-  { label: "Lĩnh vực hoạt động", href: "/services" },
+  { label: "Dịch vụ", href: "/services" },
   { label: "Dự án", href: "/projects" },
   { label: "Tin tức", href: "/news" },
   { label: "Tuyển dụng", href: "/careers" },
@@ -191,12 +192,7 @@ export function SiteHeader() {
           </div>
 
           <div className="hidden items-center space-x-3 sm:flex">
-            <Link
-              href="/contact"
-              className="rounded bg-[#098a58] px-4 py-2 text-xs font-bold text-white shadow transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#08794d] hover:shadow-md active:translate-y-0 md:text-sm"
-            >
-              Yêu cầu tư vấn &amp; báo giá
-            </Link>
+            <LanguageSwitcher />
           </div>
 
           <div className="flex items-center lg:hidden">
