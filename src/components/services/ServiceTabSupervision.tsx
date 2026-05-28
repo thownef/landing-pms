@@ -1,9 +1,9 @@
 "use client";
 
 import { BookOpen } from "lucide-react";
-import { ServiceDocList } from "./ServiceDocList";
+import { ServiceDocList, type DocItem } from "./ServiceDocList";
 
-const DOCS = [
+const DOCS: DocItem[] = [
   { name: "Giấy đăng ký kinh doanh & Thẻ khai thuế", size: "1.2 MB", type: "PDF" },
   { name: "Giấy chứng nhận Hệ thống Quản Lý Chất Lượng tiêu chuẩn ISO 9001:2015", size: "2.8 MB", type: "PDF_VERIFIED" },
   { name: "Chứng chỉ hoạt động năng lực hoạt động xây dựng Hạng I, II, III", size: "5.4 MB", type: "PDF_PRO" },
@@ -18,11 +18,10 @@ const PROJECTS = [
 ];
 
 interface ServiceTabSupervisionProps {
-  onPreview: (name: string) => void;
   onDownload: (name: string) => void;
 }
 
-export function ServiceTabSupervision({ onPreview, onDownload }: ServiceTabSupervisionProps) {
+export function ServiceTabSupervision({ onDownload }: ServiceTabSupervisionProps) {
   return (
     <div className="space-y-10">
       {/* Hero row */}
@@ -74,7 +73,6 @@ export function ServiceTabSupervision({ onPreview, onDownload }: ServiceTabSuper
             title="Văn Bản Pháp Lý & Chứng Chỉ Sát Hạch"
             subtitle="Hồ sơ năng lực pháp lý mộc đỏ đã được scan định dạng nén mật độ cao:"
             docs={DOCS}
-            onPreview={onPreview}
             onDownload={onDownload}
           />
         </div>

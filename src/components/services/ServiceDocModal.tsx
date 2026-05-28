@@ -4,11 +4,25 @@ import { FileText, Download, X } from "lucide-react";
 
 interface ServiceDocModalProps {
   docName: string;
+  docUrl?: string;
   onClose: () => void;
   onDownload: (name: string) => void;
 }
 
-export function ServiceDocModal({ docName, onClose, onDownload }: ServiceDocModalProps) {
+export function ServiceDocModal({ docName, docUrl, onClose, onDownload }: ServiceDocModalProps) {
+  const handleDownload = () => {
+    onClose();
+    if (docUrl) {
+      const a = document.createElement("a");
+      a.href = docUrl;
+      a.download = docName + ".pdf";
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    } else {
+      onDownload(docName);
+    }
+  };
   return (
     <div className="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4">
       <div className="bg-white w-full max-w-2xl rounded-2xl shadow-2xl border border-gray-200 overflow-hidden flex flex-col">
@@ -66,7 +80,7 @@ export function ServiceDocModal({ docName, onClose, onDownload }: ServiceDocModa
               Đóng cửa sổ
             </button>
             <button
-              onClick={() => { onClose(); onDownload(docName); }}
+              onClick={handleDownload}
               className="w-full sm:w-auto px-6 py-2 bg-[#1e4e8c] hover:bg-[#153b6c] text-white rounded-lg text-xs font-bold transition-all shadow-md flex items-center justify-center space-x-1 cursor-pointer"
             >
               <Download className="w-3.5 h-3.5 mr-1" />

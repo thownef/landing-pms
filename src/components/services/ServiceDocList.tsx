@@ -6,17 +6,59 @@ export interface DocItem {
   name: string;
   size: string;
   type: string;
+  url?: string;
+  files?: Array<{
+    name: string;
+    url: string;
+    size: string;
+    type: string;
+  }>;
 }
 
 interface ServiceDocListProps {
   title: string;
   subtitle: string;
   docs: DocItem[];
-  onPreview: (name: string) => void;
   onDownload: (name: string) => void;
 }
 
-export function ServiceDocList({ title, subtitle, docs, onPreview, onDownload }: ServiceDocListProps) {
+export function ServiceDocList({ title, subtitle, docs, onDownload }: ServiceDocListProps) {
+  const handleView = (doc: DocItem) => {
+    if (doc.files && doc.files.length > 0) {
+      // If multiple files, open the first one or show a selection
+      window.open(doc.files[0].url, "_blank", "noopener,noreferrer");
+    } else if (doc.url) {
+      window.open(doc.url, "_blank", "noopener,noreferrer");
+    }
+  };
+
+  const handleDownload = (doc: DocItem) => {
+    if (doc.files && doc.files.length > 0) {
+      // Download all files in the group
+      doc.files.forEach((file, index) => {
+        setTimeout(() => {
+          const a = document.createElement("a");
+          a.href = file.url;
+          const extension = file.type.includes('XLSX') ? '.xlsx' : '.pdf';
+          a.download = file.name + extension;
+          document.body.appendChild(a);
+          a.click();
+          document.body.removeChild(a);
+        }, index * 500); // Delay between downloads
+      });
+    } else if (doc.url) {
+      const a = document.createElement("a");
+      a.href = doc.url;
+      const extension = doc.type.includes('XLSX') ? '.xlsx' : '.pdf';
+      a.download = doc.name + extension;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    } else {
+      onDownload(doc.name);
+    }
+  };
+
   return (
     <div className="space-y-4">
       <div className="flex items-center space-x-2">
@@ -37,22 +79,23 @@ export function ServiceDocList({ title, subtitle, docs, onPreview, onDownload }:
               <div>
                 <span className="text-xs font-extrabold text-emerald-950 block leading-tight">{doc.name}</span>
                 <span className="text-[9px] text-[#1e4e8c] leading-none mt-1 inline-block bg-blue-50 px-1.5 py-0.5 rounded font-bold">
-                  {doc.size} • {doc.type.split("_")[0]}
+                  {doc.size} • {doc.type.split("_")[0]}{doc.files ? ` (${doc.files.length} files)` : ""}
                 </span>
               </div>
             </div>
             <div className="flex items-center space-x-1">
               <button
-                onClick={() => onPreview(doc.name)}
-                className="p-1.5 text-gray-400 hover:text-[#1e4e8c] bg-slate-50 hover:bg-blue-50 rounded-lg transition-colors cursor-pointer"
-                title="Xem nhanh văn bản"
+                onClick={() => handleView(doc)}
+                disabled={!doc.url && (!doc.files || doc.files.length === 0)}
+                className="p-1.5 text-gray-400 hover:text-[#1e4e8c] bg-slate-50 hover:bg-blue-50 rounded-lg transition-colors cursor-pointer disabled:opacity-30 disabled:cursor-not-allowed"
+                title={doc.files ? "Xem file đầu tiên" : "Xem tài liệu"}
               >
                 <Eye className="w-3.5 h-3.5" />
               </button>
               <button
-                onClick={() => onDownload(doc.name)}
+                onClick={() => handleDownload(doc)}
                 className="p-1.5 text-gray-400 hover:text-amber-600 bg-slate-50 hover:bg-amber-50 rounded-lg transition-colors cursor-pointer"
-                title="Tải tệp PDF chính thức"
+                title={doc.files ? `Tải ${doc.files.length} files` : "Tải tệp"}
               >
                 <Download className="w-3.5 h-3.5" />
               </button>

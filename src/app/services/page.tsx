@@ -5,11 +5,9 @@ import { ServiceTabNav, type ServiceTab } from "@/components/services/ServiceTab
 import { ServiceTabTesting } from "@/components/services/ServiceTabTesting";
 import { ServiceTabSupervision } from "@/components/services/ServiceTabSupervision";
 import { ServiceTabDesign } from "@/components/services/ServiceTabDesign";
-import { ServiceDocModal } from "@/components/services/ServiceDocModal";
 
 export default function ServicesPage() {
   const [activeTab, setActiveTab] = useState<ServiceTab>("thi_nghiem");
-  const [selectedDoc, setSelectedDoc] = useState<string | null>(null);
 
   const triggerDownload = (fileName: string) => {
     alert(
@@ -30,23 +28,11 @@ export default function ServicesPage() {
         <ServiceTabNav active={activeTab} onChange={setActiveTab} />
 
         <div className="bg-slate-50 rounded-3xl border border-gray-200 shadow-xl overflow-hidden p-6 md:p-10 text-left">
-          {activeTab === "thi_nghiem" && (
-            <ServiceTabTesting onPreview={setSelectedDoc} onDownload={triggerDownload} />
-          )}
-          {activeTab === "giam_sat" && (
-            <ServiceTabSupervision onPreview={setSelectedDoc} onDownload={triggerDownload} />
-          )}
+          {activeTab === "thi_nghiem" && <ServiceTabTesting onDownload={triggerDownload} />}
+          {activeTab === "giam_sat" && <ServiceTabSupervision onDownload={triggerDownload} />}
           {activeTab === "thiet_ke" && <ServiceTabDesign />}
         </div>
       </div>
-
-      {selectedDoc && (
-        <ServiceDocModal
-          docName={selectedDoc}
-          onClose={() => setSelectedDoc(null)}
-          onDownload={triggerDownload}
-        />
-      )}
     </section>
   );
 }

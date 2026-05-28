@@ -5,8 +5,8 @@ import { Download } from "lucide-react";
 const CapacityProfile = () => {
   const handleDownloadPdf = () => {
     const link = document.createElement("a");
-    link.href = "/assets/files/PhucMySon_Profile_10022025.pdf";
-    link.download = "PhucMySon_Profile_10022025.pdf";
+    link.href = "/assets/files/HSNL LAS.XD PMS 2026.pdf";
+    link.download = "HSNL LAS.XD PMS 2026.pdf";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -16,7 +16,7 @@ const CapacityProfile = () => {
     <div className="mt-20 border-t border-gray-200 pt-16">
       <div className="flex flex-col items-center justify-center max-w-xl mx-auto bg-gradient-to-br from-slate-50 to-slate-100 p-8 sm:p-12 rounded-2xl border border-gray-200 shadow-sm text-center">
         <a
-          href="/assets/files/PhucMySon_Profile_10022025.pdf"
+          href="/assets/files/HSNL LAS.XD PMS 2026.pdf"
           target="_blank"
           rel="noopener noreferrer"
           className="relative group max-w-sm w-full mb-8 block cursor-pointer"
@@ -55,7 +55,7 @@ const CapacityProfile = () => {
 
         <div className="w-full max-w-sm space-y-3">
           <a
-            href="/assets/files/PhucMySon_Profile_10022025.pdf"
+            href="/assets/files/HSNL LAS.XD PMS 2026.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="w-full inline-flex items-center justify-center px-8 py-4 bg-[#1e4e8c] text-white tracking-widest font-black text-sm rounded-lg hover:bg-[#153b6c] transition-all duration-300 hover:shadow-lg cursor-pointer uppercase"
