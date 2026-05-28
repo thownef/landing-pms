@@ -33,24 +33,24 @@ export function ServiceTabTesting({ onDownload }: ServiceTabTestingProps) {
         <div className="flex-1 space-y-4">
           <div className="flex items-center space-x-2">
             <span className="h-2 w-2 rounded-full bg-amber-500 animate-ping" />
-            <span className="text-[10px] tracking-widest text-[#1e4e8c] font-black uppercase">LĨNH VỰC THÍ NGHIỆM CHUYÊN NGÀNH</span>
+            <span className="text-base tracking-widest text-[#1e4e8c] font-black uppercase">LĨNH VỰC THÍ NGHIỆM CHUYÊN NGÀNH</span>
           </div>
           <h3 className="text-xl sm:text-2xl font-black text-emerald-950 uppercase leading-tight">
             Thí nghiệm kiểm tra chất lượng công trình (LAS-XD 763)
           </h3>
-          <div className="border-l-4 border-amber-400 bg-amber-50/50 p-4 rounded-r-xl italic text-sm text-gray-700 leading-relaxed shadow-sm">
+          <div className="border-l-4 border-amber-400 bg-amber-50/50 p-4 rounded-r-xl italic text-base text-black leading-relaxed shadow-sm">
             "Về lĩnh vực thí nghiệm kiểm tra chất lượng công trình, <strong>PMS TCC</strong> đầu tư đồng bộ hệ thống trang thiết bị hiện
             đại, đầy đủ và được hiệu chuẩn, kiểm định định kỳ theo quy định nhằm đáp ứng hiệu quả các công tác thí nghiệm tại hiện trường
             và trong phòng thí nghiệm. Hệ thống phòng thí nghiệm <strong>LAS-XD 763 (LAS-XD HCM.017)</strong> của chúng tôi đáp ứng đầy đủ
             các tiêu chuẩn, quy chuẩn kỹ thuật hiện hành, phục vụ công tác kiểm soát chất lượng cho nhiều loại hình công trình dân dụng,
             công nghiệp và năng lượng."
           </div>
-          <p className="text-sm text-gray-600 leading-relaxed font-light">
+          <p className="text-base text-black leading-relaxed">
             Chúng tôi có nhiều kinh nghiệm trong công tác thí nghiệm phục vụ các dự án điện gió, điện mặt trời, trạm biến áp và đường dây
             truyền tải điện trên cả nước. PMS TCC đã tham gia thực hiện các hạng mục thí nghiệm vật liệu, kiểm tra chất lượng nền móng, kết
             cấu, bê tông, hàn, tiếp địa, điện và các công tác kiểm định chuyên ngành khác trong quá trình thi công và nghiệm thu công trình.
           </p>
-          <p className="text-sm text-gray-600 leading-relaxed font-light">
+          <p className="text-base text-black leading-relaxed">
             Với đội ngũ kỹ sư, kỹ thuật viên được đào tạo chuyên môn bài bản cùng quy trình quản lý chất lượng chặt chẽ, PMS TCC cam kết
             cung cấp kết quả thí nghiệm chính xác, khách quan và kịp thời, góp phần hỗ trợ Chủ đầu tư và các bên liên quan kiểm soát chất
             lượng, tiến độ và hiệu quả đầu tư của dự án.

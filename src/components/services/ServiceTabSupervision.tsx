@@ -31,26 +31,26 @@ export function ServiceTabSupervision({ onDownload }: ServiceTabSupervisionProps
         <div className="flex-1 space-y-4">
           <div className="flex items-center space-x-2">
             <span className="h-2 w-2 rounded-full bg-amber-500 animate-ping" />
-            <span className="text-[10px] tracking-widest text-[#1e4e8c] font-black uppercase">LĨNH VỰC SÁT HÀNH KIỂM SOÁT THI CÔNG</span>
+            <span className="text-base tracking-widest text-[#1e4e8c] font-black uppercase">LĨNH VỰC SÁT HÀNH KIỂM SOÁT THI CÔNG</span>
           </div>
           <h3 className="text-xl sm:text-2xl font-black text-emerald-950 uppercase leading-tight">
             Tư vấn giám sát thi công (Bộ Xây dựng phê chuẩn Hạng I)
           </h3>
-          <div className="border-l-4 border-amber-400 bg-amber-50/50 p-4 rounded-r-xl italic text-sm text-gray-700 leading-relaxed shadow-sm">
+          <div className="border-l-4 border-amber-400 bg-amber-50/50 p-4 rounded-r-xl italic text-base text-black leading-relaxed shadow-sm">
             "PMS TCC quy tụ đội ngũ kỹ sư và chuyên gia giàu kinh nghiệm trong lĩnh vực công nghiệp và năng lượng, đặc biệt tại các dự án
             điện gió, điện mặt trời, trạm biến áp và đường dây truyền tải điện. Chúng tôi tin rằng yếu tố con người luôn là nền tảng tạo
             nên chất lượng và sự thành công của mỗi dự án."
           </div>
-          <p className="text-xs text-gray-600 leading-relaxed font-light">
+          <p className="text-base text-black leading-relaxed">
             Đội ngũ của PMS TCC không chỉ thực hiện công tác giám sát thi công mà còn đồng hành tư vấn cho Chủ đầu tư trong suốt quá trình
             triển khai dự án. Chúng tôi cam kết bám sát hiện trường, kiểm soát chất lượng, tiến độ và an toàn thi công; đồng thời hỗ trợ về
             pháp lý, kỹ thuật, hồ sơ và công tác nghiệm thu nhằm đảm bảo dự án được triển khai hiệu quả và đúng quy định.
           </p>
-          <p className="text-xs text-gray-600 leading-relaxed font-light">
+          <p className="text-base text-black leading-relaxed">
             Các kỹ sư của PMS TCC là những nhân sự đã trực tiếp tham gia các dự án năng lượng tái tạo từ giai đoạn phát triển mạnh mẽ
             2017 – 2021, với kinh nghiệm thực tế trải dài từ Bắc vào Nam, qua nhiều điều kiện địa hình và môi trường thi công khác nhau.
           </p>
-          <p className="text-xs text-gray-600 leading-relaxed font-light">
+          <p className="text-base text-black leading-relaxed">
             Chúng tôi tin rằng, với bề dày kinh nghiệm, tinh thần trách nhiệm và sự tận tâm trong việc bảo vệ uy tín thương hiệu, PMS TCC
             sẽ luôn đóng góp những giá trị cốt lõi, hoàn thành đúng chuẩn an toàn cấp quốc gia tốt nhất.
           </p>
