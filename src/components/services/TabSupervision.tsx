@@ -1,7 +1,7 @@
 "use client";
 
 import { BookOpen } from "lucide-react";
-import { ServiceDocList, type DocItem } from "./ServiceDocList";
+import { DocList, type DocItem } from "./DocList";
 
 const DOCS: DocItem[] = [
   { name: "Giấy đăng ký kinh doanh", size: "1.2 MB", type: "PDF", url: "/assets/files/QAQC/GPKD%20PMS%20L13%20(2023).pdf" },
@@ -61,11 +61,7 @@ const ROLE_STYLE: Record<RoleTag, string> = {
   "Liên danh": "bg-amber-50 text-amber-700 border-amber-200",
 };
 
-interface ServiceTabSupervisionProps {
-  onDownload: (name: string) => void;
-}
-
-export function ServiceTabSupervision({ onDownload }: ServiceTabSupervisionProps) {
+export function TabSupervision() {
   return (
     <div className="space-y-10">
       {/* Hero row */}
@@ -110,10 +106,9 @@ export function ServiceTabSupervision({ onDownload }: ServiceTabSupervisionProps
       {/* Documents + Experience grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
         <div className="lg:col-span-5">
-          <ServiceDocList
+          <DocList
             title="Văn Bản Pháp Lý & Chứng Chỉ Sát Hạch"
             docs={DOCS}
-            onDownload={onDownload}
           />
         </div>
 

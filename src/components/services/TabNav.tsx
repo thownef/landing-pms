@@ -1,40 +1,52 @@
 "use client";
 
-import { FlaskConical, HardHat, ClipboardList } from "lucide-react";
+import { ClipboardList, FlaskConical, HardHat } from "lucide-react";
 
-export type ServiceTab = "thi_nghiem" | "giam_sat" | "thiet_ke";
+export type Tab = "thi_nghiem" | "giam_sat" | "thiet_ke";
 
-interface ServiceTabNavProps {
-  active: ServiceTab;
-  onChange: (tab: ServiceTab) => void;
+export interface TabNavItem {
+  id: Tab;
+  label: string;
+  sub: string;
 }
 
-export function ServiceTabNav({ active, onChange }: ServiceTabNavProps) {
-  const tabs = [
-    {
-      id: "thi_nghiem" as ServiceTab,
-      icon: FlaskConical,
-      label: "1. Thí Nghiệm Kiểm Định",
-      sub: "LAS-XD 763 • 108 Chỉ Tiêu",
-    },
-    {
-      id: "giam_sat" as ServiceTab,
-      icon: HardHat,
-      label: "2. Tư Vấn Giám Sát",
-      sub: "Công trình Năng lượng • Hạng I",
-    },
-    {
-      id: "thiet_ke" as ServiceTab,
-      icon: ClipboardList,
-      label: "3. Thiết Kế, Thẩm Tra & QLDA",
-      sub: "Bản vẽ kết cấu móng • Quản lý thầu",
-    },
-  ];
+interface TabNavProps {
+  active: Tab;
+  tabs?: TabNavItem[];
+  onChange: (tab: Tab) => void;
+}
 
+const DEFAULT_TABS: TabNavItem[] = [
+  {
+    id: "thi_nghiem",
+    label: "1. Thí Nghiệm Kiểm Định",
+    sub: "LAS-XD 763 • 108 Chỉ Tiêu",
+  },
+  {
+    id: "giam_sat",
+    label: "2. Tư Vấn Giám Sát",
+    sub: "Công trình Năng lượng • Hạng I",
+  },
+  {
+    id: "thiet_ke",
+    label: "3. Thiết Kế, Thẩm Tra & QLDA",
+    sub: "Bản vẽ kết cấu móng • Quản lý thầu",
+  },
+];
+
+const TAB_ICON = {
+  thi_nghiem: FlaskConical,
+  giam_sat: HardHat,
+  thiet_ke: ClipboardList,
+};
+
+export function TabNav({ active, tabs = DEFAULT_TABS, onChange }: TabNavProps) {
   return (
     <div className="flex flex-col sm:flex-row justify-center items-stretch gap-2 max-w-4xl mx-auto mb-16 px-2">
-      {tabs.map(({ id, icon: Icon, label, sub }) => {
+      {tabs.map(({ id, label, sub }) => {
+        const Icon = TAB_ICON[id];
         const isActive = active === id;
+
         return (
           <button
             key={id}

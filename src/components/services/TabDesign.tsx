@@ -2,7 +2,7 @@
 
 import { ClipboardList, Sparkles } from "lucide-react";
 
-export function ServiceTabDesign() {
+export function TabDesign() {
   return (
     <div className="space-y-8 text-center py-6">
       <ClipboardList className="w-16 h-16 text-amber-500 mx-auto" />

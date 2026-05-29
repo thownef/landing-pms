@@ -9,13 +9,12 @@ export interface DocItem {
   url?: string;
 }
 
-interface ServiceDocListProps {
+interface DocListProps {
   title: string;
   docs: DocItem[];
-  onDownload: (name: string) => void;
 }
 
-export function ServiceDocList({ title, docs, onDownload }: ServiceDocListProps) {
+export function DocList({ title, docs }: DocListProps) {
   const handleView = (doc: DocItem) => {
     if (doc.url) {
       window.open(doc.url, "_blank", "noopener,noreferrer");
@@ -31,7 +30,7 @@ export function ServiceDocList({ title, docs, onDownload }: ServiceDocListProps)
       a.click();
       document.body.removeChild(a);
     } else {
-      onDownload(doc.name);
+      console.warn(`[DocList] No URL for document: ${doc.name}`);
     }
   };
 

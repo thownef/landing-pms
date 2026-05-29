@@ -1,7 +1,7 @@
 "use client";
 
 import { BookOpen } from "lucide-react";
-import { ServiceDocList, type DocItem } from "./ServiceDocList";
+import { DocList, type DocItem } from "./DocList";
 
 const DOCS: DocItem[] = [
   {
@@ -63,11 +63,7 @@ const PROJECTS = [
   { name: "TBA 500kV Đồng Nai 2 và đường dây đấu nối", location: "Đồng Nai", work: "Thí nghiệm xây dựng", role: "Thầu chính" },
 ];
 
-interface ServiceTabTestingProps {
-  onDownload: (name: string) => void;
-}
-
-export function ServiceTabTesting({ onDownload }: ServiceTabTestingProps) {
+export function TabTesting() {
   return (
     <div className="space-y-10">
       {/* Hero row */}
@@ -113,7 +109,7 @@ export function ServiceTabTesting({ onDownload }: ServiceTabTestingProps) {
       {/* Documents + Experience grid */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
         <div className="lg:col-span-5">
-          <ServiceDocList title="Hồ Sơ Tài Liệu Số Hóa Gốc" docs={DOCS} onDownload={onDownload} />
+          <DocList title="Hồ Sơ Tài Liệu Số Hóa Gốc" docs={DOCS} />
         </div>
 
         <div className="lg:col-span-7 space-y-4">

@@ -1,9 +1,11 @@
 "use client";
 
 import { createContext, useContext, useState, type ReactNode } from "react";
+import { useRouter } from "next/navigation";
 import { getTranslation, type Language, type TranslationPath } from "@/lib/translations";
 
 const STORAGE_KEY = "pms_lang";
+const COOKIE_MAX_AGE = 60 * 60 * 24 * 365;
 
 interface LanguageContextValue {
   language: Language;
@@ -17,27 +19,21 @@ const LanguageContext = createContext<LanguageContextValue>({
   t: () => "",
 });
 
-function getInitialLang(): Language {
-  if (typeof window === "undefined") return "vi";
-  const saved = window.localStorage.getItem(STORAGE_KEY);
-  return saved === "en" ? "en" : "vi";
-}
-
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>(getInitialLang);
+export function LanguageProvider({ children, initialLanguage = "vi" }: { children: ReactNode; initialLanguage?: Language }) {
+  const router = useRouter();
+  const [language, setLanguageState] = useState<Language>(initialLanguage);
 
   const setLanguage = (next: Language) => {
+    if (next === language) return;
+
     setLanguageState(next);
-    localStorage.setItem(STORAGE_KEY, next);
+    document.cookie = `${STORAGE_KEY}=${next}; path=/; max-age=${COOKIE_MAX_AGE}; samesite=lax`;
+    router.refresh();
   };
 
   const t = (path: TranslationPath) => getTranslation(path, language);
 
-  return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
-      {children}
-    </LanguageContext.Provider>
-  );
+  return <LanguageContext.Provider value={{ language, setLanguage, t }}>{children}</LanguageContext.Provider>;
 }
 
 export function useLanguage() {
