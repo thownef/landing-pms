@@ -13,11 +13,53 @@ const DOCS: DocItem[] = [
   { name: "Hồ sơ năng lực", size: "8.4 MB", type: "PDF", url: "/assets/files/QAQC/HSNL%20TVGS%20TK%20PMS%202026%20-%20VI.pdf" },
 ];
 
-const PROJECTS = [
-  { name: "Cánh Đồng Điện Gió Kosy - Bạc Liêu", work: "Giám sát quy trình lắp dựng trục tháp, định tâm ổ đỡ tuabin và gia tải lực né cáp dầm", status: "Đã đóng điện" },
-  { name: "Nhà Máy Điện Mặt Trời Xuân Thiện", work: "Giám sát cơ cấu thốc giập khung sắt mạ vàng giá nâng pin, chống võng cáp biến áp", status: "Vận hành an toàn" },
-  { name: "Dự Án TBA 220kV Lộc Ninh & Đường dây", work: "Tư vấn giám sát thi công bê tông khối móng trạm biến áp, đấu nối đóng nạp trạm biến áp", status: "Nghiệm thu dứt điểm" },
+type RoleTag = "Thầu phụ" | "Thầu chính" | "Liên danh";
+
+interface Project {
+  stt: number;
+  name: string;
+  work: string;
+  role: RoleTag;
+}
+
+const PROJECTS: Project[] = [
+  {
+    stt: 1,
+    name: "NMĐG Trung Nam giai đoạn 3 – 48MW",
+    work: "TVGS thi công xây dựng và lắp đặt thiết bị",
+    role: "Thầu phụ",
+  },
+  {
+    stt: 2,
+    name: "DA NMĐG Tài Tâm & Hoàng Hải",
+    work: "Tư vấn giám sát thi công xây dựng và lắp đặt thiết bị",
+    role: "Thầu phụ",
+  },
+  {
+    stt: 3,
+    name: "Cao tốc Bắc – Nam (Nha Trang – Cam Lâm) – Di dời lưới điện",
+    work: "TVGS thi công di dời hệ thống lưới điện đoạn Km45+300÷Km47+000",
+    role: "Thầu chính",
+  },
+  {
+    stt: 4,
+    name: "Công viên hoa – Ánh sáng nghệ thuật Delight Park Đà Lạt",
+    work: "TVGS thi công xây dựng và lắp đặt thiết bị M&E toàn bộ công trình",
+    role: "Liên danh",
+  },
+  {
+    stt: 5,
+    name: "DA DZ220kV TĐ Đắk Mi 1 – TĐ Đắk Mi 2 và ngăn lộ MR 220kV",
+    work: "Giám sát thi công xây dựng và lắp đặt thiết bị đường dây 220kV",
+    role: "Liên danh",
+  },
 ];
+
+const ROLE_STYLE: Record<RoleTag, string> = {
+  "Thầu phụ": "bg-sky-50 text-sky-700 border-sky-200",
+  "Thầu chính": "bg-emerald-50 text-emerald-700 border-emerald-200",
+  "Liên danh": "bg-amber-50 text-amber-700 border-amber-200",
+};
 
 interface ServiceTabSupervisionProps {
   onDownload: (name: string) => void;
@@ -80,23 +122,26 @@ export function ServiceTabSupervision({ onDownload }: ServiceTabSupervisionProps
             <BookOpen className="w-4 h-4 text-[#1e4e8c]" />
             <h4 className="text-sm font-bold uppercase tracking-widest text-emerald-950">Công Trình Giám Sát Tiêu Biểu</h4>
           </div>
-          <div className="overflow-x-auto rounded-xl border border-gray-200">
-            <table className="min-w-full divide-y divide-gray-200 text-xs">
+
+          <div className="overflow-x-auto rounded-xl border border-gray-200 shadow-sm">
+            <table className="min-w-full divide-y divide-gray-200 text-sm">
               <thead className="bg-[#153b6c] text-white">
                 <tr>
-                  <th className="px-4 py-3 text-left font-bold uppercase tracking-wider">Tên dự án Năng lượng</th>
-                  <th className="px-3 py-3 text-left font-bold uppercase tracking-wider">Phạm vi giám sát cốt lõi</th>
-                  <th className="px-3 py-3 text-center font-bold uppercase tracking-wider">Tiến độ</th>
+                  <th className="px-4 py-3 text-left font-bold uppercase tracking-wider">Tên dự án</th>
+                  <th className="px-3 py-3 text-left font-bold uppercase tracking-wider">Nội dung công việc</th>
+                  <th className="px-3 py-3 text-center font-bold uppercase tracking-wider whitespace-nowrap">Vai trò</th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-100">
-                {PROJECTS.map((row, idx) => (
-                  <tr key={idx} className="hover:bg-slate-50/80 transition-colors">
-                    <td className="text-sm px-4 py-3 font-extrabold text-emerald-950 max-w-[200px] leading-tight text-left">{row.name}</td>
-                    <td className="text-sm px-3 py-3 text-black leading-relaxed text-left">{row.work}</td>
-                    <td className="text-sm px-3 py-3 text-center whitespace-nowrap">
-                      <span className="inline-flex px-2 py-0.5 bg-blue-50 text-[#1e4e8c] border border-blue-200 rounded font-bold">
-                        {row.status}
+                {PROJECTS.map((row) => (
+                  <tr key={row.stt} className="hover:bg-slate-50/80 transition-colors">
+                    <td className="px-4 py-3 font-semibold text-emerald-950 leading-snug text-left max-w-[220px]">
+                      {row.name}
+                    </td>
+                    <td className="px-3 py-3 text-gray-700 leading-relaxed text-left">{row.work}</td>
+                    <td className="px-3 py-3 text-center whitespace-nowrap">
+                      <span className={`inline-flex px-2 py-0.5 rounded border font-semibold ${ROLE_STYLE[row.role]}`}>
+                        {row.role}
                       </span>
                     </td>
                   </tr>
@@ -104,6 +149,7 @@ export function ServiceTabSupervision({ onDownload }: ServiceTabSupervisionProps
               </tbody>
             </table>
           </div>
+
           <div className="grid grid-cols-2 gap-3 pt-2">
             <div className="rounded-xl overflow-hidden border border-gray-200 shadow-sm group">
               <img
