@@ -2,88 +2,13 @@
 
 import Image from "next/image";
 import { BookOpen } from "lucide-react";
-import { DocList, type DocItem } from "./DocList";
-
-export type RichTextChild = {
-  text: string;
-  type: string;
-  bold: boolean;
-  italic: boolean;
-  underline: boolean;
-};
-
-export type RichTextBlock = {
-  type: string;
-  children: RichTextChild[];
-};
-
-export type TestingImage = {
-  url: string;
-  alternativeText: string | null;
-  width: number | null;
-  height: number | null;
-};
-
-export type TestingProject = {
-  name: string;
-  location: string;
-  work: string;
-  role: string;
-  color: string | null;
-};
-
-export interface TestingContent {
-  linhVuc: string;
-  tieuDe: string;
-  moTa1: RichTextBlock[];
-  moTa2: RichTextBlock[];
-  tieuDe2: string;
-  tieuDe3: string;
-  anh1: TestingImage | null;
-  anh2: TestingImage | null;
-  anh3: TestingImage | null;
-  document: DocItem[];
-  projects: TestingProject[];
-}
+import { DocList } from "./DocList";
+import { RichText } from "./RichText";
+import { serviceRoleStyle } from "@/lib/service-style";
+import type { ServiceDetailContent } from "@/types/service-detail.type";
 
 interface TabTestingProps {
-  content: TestingContent | null;
-}
-
-function renderInline(children: RichTextChild[] | undefined) {
-  return children?.map((child, index) => {
-    const text = child.text ?? "";
-
-    return (
-      <span
-        key={index}
-        className={`${child.bold ? "font-bold" : ""} ${child.italic ? "italic" : ""} ${child.underline ? "underline" : ""}`}
-      >
-        {text}
-      </span>
-    );
-  });
-}
-
-function RichText({ blocks, className }: { blocks: RichTextBlock[]; className: string }) {
-  return (
-    <>
-      {blocks
-        .filter((block) => block.children?.some((child) => child.text?.trim()))
-        .map((block, index) => (
-          <p key={index} className={className}>
-            {renderInline(block.children)}
-          </p>
-        ))}
-    </>
-  );
-}
-
-function roleStyle(color: string | null) {
-  if (color === "blue") return "bg-blue-50 text-[#1e4e8c] border-blue-200";
-  if (color === "emerald") return "bg-emerald-50 text-emerald-700 border-emerald-200";
-  if (color === "amber") return "bg-amber-50 text-amber-700 border-amber-200";
-  return "bg-slate-50 text-slate-700 border-slate-200";
+  content: ServiceDetailContent | null;
 }
 
 export function TabTesting({ content }: TabTestingProps) {
@@ -114,6 +39,7 @@ export function TabTesting({ content }: TabTestingProps) {
               width={content.anh1.width ?? 600}
               alt={content.anh1.alternativeText ?? content.tieuDe}
               sizes="(min-width: 1024px) 40vw, 100vw"
+              style={{ width: "100%", height: "auto" }}
             />
           </div>
         )}
@@ -146,7 +72,7 @@ export function TabTesting({ content }: TabTestingProps) {
                     <td className="px-3 py-3 text-black leading-snug text-left whitespace-nowrap">{row.location}</td>
                     <td className="px-3 py-3 text-black leading-snug text-left">{row.work}</td>
                     <td className="px-3 py-3 text-center whitespace-nowrap">
-                      <span className={`inline-flex px-2 py-0.5 border rounded font-bold text-[10px] ${roleStyle(row.color)}`}>
+                      <span className={`inline-flex px-2 py-0.5 border rounded font-bold text-[10px] ${serviceRoleStyle(row.color)}`}>
                         {row.role}
                       </span>
                     </td>
@@ -159,13 +85,12 @@ export function TabTesting({ content }: TabTestingProps) {
           <div className="grid grid-cols-2 gap-3 pt-2">
             {[content.anh2, content.anh3].map((image, index) =>
               image?.url ? (
-                <div key={index} className="rounded-xl overflow-hidden border border-gray-200 shadow-sm group">
+                <div key={index} className="relative h-48 rounded-xl overflow-hidden border border-gray-200 shadow-sm group">
                   <Image
                     src={image.url}
                     alt={image.alternativeText ?? ""}
-                    width={image.width ?? 405}
-                    height={image.height ?? 192}
-                    className="w-full h-48 object-cover brightness-95 group-hover:scale-105 transition-transform duration-300"
+                    fill
+                    className="object-cover brightness-95 group-hover:scale-105 transition-transform duration-300"
                     sizes="(min-width: 1024px) 350px, 50vw"
                   />
                 </div>

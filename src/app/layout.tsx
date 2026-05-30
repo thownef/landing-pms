@@ -4,6 +4,7 @@ import { Roboto } from "next/font/google";
 import { FloatingActions } from "@/components/floating-actions";
 import { SiteHeader } from "@/components/site-header";
 import { SiteFooter } from "@/components/site-footer";
+import { fetchFooterData } from "@/lib/footer";
 import { LanguageProvider } from "@/lib/LanguageContext";
 import type { Language } from "@/lib/translations";
 import "./globals.css";
@@ -26,6 +27,7 @@ export default async function RootLayout({
 }>) {
   const savedLanguage = (await cookies()).get("pms_lang")?.value;
   const initialLanguage: Language = savedLanguage === "en" ? "en" : "vi";
+  const footer = await fetchFooterData(initialLanguage);
 
   return (
     <html lang={initialLanguage} className={`${roboto.variable} h-full antialiased`}>
@@ -33,7 +35,7 @@ export default async function RootLayout({
         <LanguageProvider initialLanguage={initialLanguage}>
           <SiteHeader />
           {children}
-          <SiteFooter />
+          <SiteFooter footer={footer} />
           <FloatingActions />
         </LanguageProvider>
       </body>

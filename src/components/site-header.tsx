@@ -119,7 +119,14 @@ export function SiteHeader() {
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 md:px-6 lg:px-8">
           <Link href="/" className="group flex select-none items-center space-x-3">
             <div className="relative flex h-16 w-16 shrink-0 items-center justify-center">
-              <Image src="/assets/img/pms_logo.png" alt="PMS TCC Logo" width={64} height={64} className="object-contain" priority />
+              <Image
+                src="/assets/img/pms_logo.png"
+                alt="PMS TCC Logo"
+                fill
+                sizes="64px"
+                className="object-contain"
+                priority
+              />
             </div>
 
             <div className="flex flex-col">

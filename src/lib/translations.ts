@@ -26,30 +26,27 @@ export const translations = {
     contactNow: { vi: "Liên hệ ngay", en: "Contact Us" },
   },
 
-  // Footer
-  footer: {
-    companyName: { vi: "Phúc Mỹ Sơn", en: "Phuc My Son" },
-    companyTagline: { vi: "Tư vấn xây dựng & năng lượng", en: "Construction & Energy Consulting" },
-    companyDescription: {
-      vi: "Trải qua hơn 20 năm trưởng thành bền vững, PMS TCC đồng hành cùng chủ đầu tư và đối tác trong các dịch vụ tư vấn xây dựng, giám sát, quản lý dự án và thí nghiệm kiểm tra chất lượng công trình.",
-      en: "With over 20 years of sustainable growth, PMS TCC partners with investors and clients in construction consulting, supervision, project management, and quality testing services.",
+  // Services - Design Tab
+  servicesDesign: {
+    title: { vi: "Tư vấn Thiết kế, Thẩm tra & Quản lý dự án", en: "Design Consulting, Technical Appraisal & Project Management" },
+    description: {
+      vi: "Phân viện thiết kế xây dựng công trình của PMS TCC chuyên nhận thiết kế kỹ thuật, lập dự án cơ sở pháp lý, thẩm tra biện pháp tổ chức thi công móng siêu tải trọng cho thiết bị xoay và tháp nâng áp.",
+      en: "PMS TCC's construction design division provides technical design, legally compliant project dossiers, and appraisal of construction methods for ultra-heavy foundations, rotating equipment supports, and step-up transformer structures.",
     },
-    motto: { vi: "XÂY VỮNG NIỀM TIN - DỰNG UY TÍN VÀNG", en: "BUILDING TRUST - ESTABLISHING GOLDEN REPUTATION" },
-    legalInfo: { vi: "Thông tin pháp lý", en: "Legal Information" },
-    businessName: { vi: "Tên doanh nghiệp:", en: "Business Name:" },
-    businessNameValue: { vi: "CTCP TVXD TM Phúc Mỹ Sơn", en: "Phuc My Son Construction & Trading Consulting JSC" },
-    taxCode: { vi: "Mã số thuế:", en: "Tax Code:" },
-    yearEstablished: { vi: "Năm thành lập:", en: "Year Established:" },
-    mainField: { vi: "Lĩnh vực chính:", en: "Main Field:" },
-    mainFieldValue: { vi: "Tư vấn xây dựng & thí nghiệm", en: "Construction Consulting & Testing" },
-    labCode: { vi: "Mã phòng thí nghiệm:", en: "Laboratory Code:" },
-    operatingAddress: { vi: "Địa chỉ tác nghiệp", en: "Operating Address" },
-    headquarters: { vi: "Trụ sở chính:", en: "Headquarters:" },
-    headquartersAddress: { vi: "28 đường số 16, Khu phố 5, P. Hiệp Bình, TP.HCM", en: "28 Street No. 16, Quarter 5, Hiep Binh Ward, HCMC" },
-    laboratory: { vi: "Phòng thí nghiệm:", en: "Laboratory:" },
-    laboratoryAddress: { vi: "5D/5, Khu phố Đồng An 1, Phường Bình Hòa, TP.HCM", en: "5D/5, Dong An 1 Quarter, Binh Hoa Ward, HCMC" },
-    contactInfo: { vi: "Liên hệ:", en: "Contact:" },
+    noticeTitle: { vi: "THÔNG BÁO TỪ HỆ THỐNG PMS-TCC CẬP NHẬT 2026:", en: "NOTICE FROM THE PMS-TCC SYSTEM - 2026 UPDATE:" },
+    noticeQuote: {
+      vi: "Kinh nghiệm: Gửi bảng kê, thông tin và hình ảnh sau",
+      en: "Experience records: project lists, information, and images will be provided later",
+    },
+    noticeDescription: {
+      vi: "Hiện bộ phận kỹ sư thiết kế móng gá đang tổng hợp dữ liệu bản vẽ CAD chi tiết và danh mục dự án thẩm tra bệ tháo tủ dầu điện lực. Hệ thống sẽ tự động cập nhật ngay khi thông tin bổ sung được phê chuẩn chính thức!",
+      en: "The foundation design engineering team is consolidating detailed CAD drawing data and the project portfolio for power equipment foundation appraisal. The system will update automatically once the additional information is officially approved.",
+    },
+    tagPileDrawings: { vi: "Bản vẽ kết cấu cọc", en: "Pile structural drawings" },
+    tagMethodStatement: { vi: "Thẩm tra biện pháp tổ chức thi công (BPTC)", en: "Construction method statement appraisal (CMS)" },
+    tagEpcDossier: { vi: "Hồ sơ giao thầu EPC", en: "EPC tender documentation" },
   },
+
 } as const;
 
 export type Language = "vi" | "en";

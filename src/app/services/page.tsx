@@ -1,8 +1,10 @@
 import { cookies } from "next/headers";
 import { Service } from "@/atomic-component/Service";
 import type { Tab, TabNavItem } from "@/components/services/TabNav";
-import type { RichTextBlock, TestingContent } from "@/components/services/TabTesting";
-import { getStrapiApiBaseUrl, getStrapiMediaUrl, type StrapiMedia } from "@/lib/strapi";
+import { mapServiceDetailData } from "@/lib/service-detail-mapper";
+import { getStrapiApiBaseUrl } from "@/lib/strapi";
+import type { DetailApiData } from "@/types/service-api.type";
+import type { ServiceDetailContent } from "@/types/service-detail.type";
 
 type ServiceApiTab = {
   key: string;
@@ -14,35 +16,6 @@ type ServiceApiData = {
   tieuDe: string;
   metas: ServiceApiTab[];
   tabs: ServiceApiTab[];
-};
-
-type TestingApiDocument = {
-  name: string | null;
-  type: string | null;
-  url: string | null;
-  file: StrapiMedia | null;
-};
-
-type TestingApiProject = {
-  name: string | null;
-  location: string | null;
-  work: string | null;
-  role: string | null;
-  color: string | null;
-};
-
-type TestingApiData = {
-  linhVuc: string | null;
-  tieuDe: string | null;
-  moTa1: RichTextBlock[] | null;
-  moTa2: RichTextBlock[] | null;
-  tieuDe2: string | null;
-  tieuDe3: string | null;
-  anh1: StrapiMedia | null;
-  anh2: StrapiMedia | null;
-  anh3: StrapiMedia | null;
-  document: TestingApiDocument[] | null;
-  projects: TestingApiProject[] | null;
 };
 
 const TAB_KEYS = new Set<Tab>(["thi_nghiem", "giam_sat", "thiet_ke"]);
@@ -61,62 +34,6 @@ function mapTabs(items: ServiceApiTab[] | undefined): TabNavItem[] {
         sub: tab.moTa ?? "",
       })) ?? []
   );
-}
-
-function mapTestingImage(media: StrapiMedia | null) {
-  const url = getStrapiMediaUrl(media);
-  if (!url) return null;
-
-  return {
-    url,
-    alternativeText: media?.alternativeText ?? null,
-    width: media?.width ?? null,
-    height: media?.height ?? null,
-  };
-}
-
-function getDocumentType(doc: TestingApiDocument): "PDF" | "XLSX" {
-  const value = doc.type || doc.file?.mime || doc.file?.url || "";
-  return value.toLowerCase().includes("xlsx") ? "XLSX" : "PDF";
-}
-
-function getDocumentSize(doc: TestingApiDocument) {
-  if (typeof doc.file?.size !== "number") return "";
-  if (doc.file.size >= 1024) return `${(doc.file.size / 1024).toFixed(1)} MB`;
-  return `${doc.file.size.toFixed(1)} KB`;
-}
-
-function mapTestingData(data: TestingApiData): TestingContent {
-  return {
-    linhVuc: data.linhVuc ?? "",
-    tieuDe: data.tieuDe ?? "",
-    moTa1: data.moTa1 ?? [],
-    moTa2: data.moTa2 ?? [],
-    tieuDe2: data.tieuDe2 ?? "",
-    tieuDe3: data.tieuDe3 ?? "",
-    anh1: mapTestingImage(data.anh1),
-    anh2: mapTestingImage(data.anh2),
-    anh3: mapTestingImage(data.anh3),
-    document:
-      data.document?.map((doc) => {
-        const fileUrl = getStrapiMediaUrl(doc.file);
-
-        return {
-          name: doc.name ?? doc.file?.alternativeText ?? "",
-          size: getDocumentSize(doc),
-          type: getDocumentType(doc),
-          url: doc.url ?? (fileUrl || undefined),
-        };
-      }) ?? [],
-    projects:
-      data.projects?.map((project) => ({
-        name: project.name ?? "",
-        location: project.location ?? "",
-        work: project.work ?? "",
-        role: project.role ?? "",
-        color: project.color ?? null,
-      })) ?? [],
-  };
 }
 
 async function fetchServiceData(locale: string): Promise<{
@@ -150,28 +67,31 @@ async function fetchServiceData(locale: string): Promise<{
   }
 }
 
-async function fetchTestingData(locale: string): Promise<TestingContent | null> {
+const DETAIL_POPULATE_QUERY =
+  "populate[anh1]=true&populate[anh2]=true&populate[anh3]=true&populate[document][populate][0]=file&populate[projects]=true";
+
+async function fetchDetailData(endpoint: "testing" | "monitor", locale: string): Promise<ServiceDetailContent | null> {
   const baseUrl = getStrapiApiBaseUrl();
 
   try {
     const response = await fetch(
-      `${baseUrl}/testing?locale=${locale}&populate[anh1]=true&populate[anh2]=true&populate[anh3]=true&populate[document][populate][0]=file&populate[projects]=true`,
+      `${baseUrl}/${endpoint}?locale=${locale}&${DETAIL_POPULATE_QUERY}`,
       {
-      next: { revalidate: 60 },
+        next: { revalidate: 60 },
       },
     );
 
     if (!response.ok) {
-      console.error(`[ServicePage] Testing API error: ${response.status} ${response.statusText}`);
+      console.error(`[ServicePage] ${endpoint} API error: ${response.status} ${response.statusText}`);
       return null;
     }
 
     const payload = await response.json();
-    const data = (payload.data ?? payload) as TestingApiData;
+    const data = (payload.data ?? payload) as DetailApiData;
 
-    return mapTestingData(data);
+    return mapServiceDetailData(data);
   } catch (err) {
-    console.error("[ServicePage] Testing fetch failed:", err);
+    console.error(`[ServicePage] ${endpoint} fetch failed:`, err);
     return null;
   }
 }
@@ -181,10 +101,11 @@ export default async function ServicePage() {
   const lang = cookieStore.get("pms_lang")?.value;
   const locale = lang === "en" ? "en" : "vi";
 
-  const [{ pageTitle, metas, tabs }, testing] = await Promise.all([
+  const [{ pageTitle, metas, tabs }, testing, monitor] = await Promise.all([
     fetchServiceData(locale),
-    fetchTestingData(locale),
+    fetchDetailData("testing", locale),
+    fetchDetailData("monitor", locale),
   ]);
 
-  return <Service pageTitle={pageTitle} metas={metas} tabs={tabs} testing={testing} />;
+  return <Service pageTitle={pageTitle} metas={metas} tabs={tabs} testing={testing} monitor={monitor} />;
 }
