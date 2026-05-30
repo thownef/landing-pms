@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { BookOpen } from "lucide-react";
 import { DocList, type DocItem } from "./DocList";
 
@@ -106,12 +107,13 @@ export function TabTesting({ content }: TabTestingProps) {
         {content.anh1?.url && (
           <div className="w-full lg:w-2/5 rounded-2xl overflow-hidden border border-gray-200 shadow-md relative group">
             <div className="absolute inset-0 bg-[#0c2e1a]/10 group-hover:bg-transparent transition-colors duration-300 z-10" />
-            <img
+            <Image
               src={content.anh1.url}
               className="w-full h-auto transform duration-500 group-hover:scale-105"
               height={content.anh1.height ?? 800}
               width={content.anh1.width ?? 600}
               alt={content.anh1.alternativeText ?? content.tieuDe}
+              sizes="(min-width: 1024px) 40vw, 100vw"
             />
           </div>
         )}
@@ -158,10 +160,13 @@ export function TabTesting({ content }: TabTestingProps) {
             {[content.anh2, content.anh3].map((image, index) =>
               image?.url ? (
                 <div key={index} className="rounded-xl overflow-hidden border border-gray-200 shadow-sm group">
-                  <img
+                  <Image
                     src={image.url}
                     alt={image.alternativeText ?? ""}
+                    width={image.width ?? 405}
+                    height={image.height ?? 192}
                     className="w-full h-48 object-cover brightness-95 group-hover:scale-105 transition-transform duration-300"
+                    sizes="(min-width: 1024px) 350px, 50vw"
                   />
                 </div>
               ) : null,

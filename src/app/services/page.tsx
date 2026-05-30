@@ -2,6 +2,7 @@ import { cookies } from "next/headers";
 import { Service } from "@/atomic-component/Service";
 import type { Tab, TabNavItem } from "@/components/services/TabNav";
 import type { RichTextBlock, TestingContent } from "@/components/services/TabTesting";
+import { getStrapiApiBaseUrl, getStrapiMediaUrl, type StrapiMedia } from "@/lib/strapi";
 
 type ServiceApiTab = {
   key: string;
@@ -13,15 +14,6 @@ type ServiceApiData = {
   tieuDe: string;
   metas: ServiceApiTab[];
   tabs: ServiceApiTab[];
-};
-
-type StrapiMedia = {
-  url: string | null;
-  alternativeText: string | null;
-  width: number | null;
-  height: number | null;
-  mime?: string | null;
-  size?: number | null;
 };
 
 type TestingApiDocument = {
@@ -71,22 +63,8 @@ function mapTabs(items: ServiceApiTab[] | undefined): TabNavItem[] {
   );
 }
 
-function getApiBaseUrl() {
-  return process.env.NEXT_PUBLIC_STRAPI_API_URL || "http://localhost:1337/api";
-}
-
-function getStrapiOrigin() {
-  return getApiBaseUrl().replace(/\/api\/?$/, "");
-}
-
-function getMediaUrl(media: StrapiMedia | null) {
-  if (!media?.url) return "";
-  if (media.url.startsWith("http://") || media.url.startsWith("https://")) return media.url;
-  return `${getStrapiOrigin()}${media.url}`;
-}
-
 function mapTestingImage(media: StrapiMedia | null) {
-  const url = getMediaUrl(media);
+  const url = getStrapiMediaUrl(media);
   if (!url) return null;
 
   return {
@@ -121,7 +99,7 @@ function mapTestingData(data: TestingApiData): TestingContent {
     anh3: mapTestingImage(data.anh3),
     document:
       data.document?.map((doc) => {
-        const fileUrl = getMediaUrl(doc.file);
+        const fileUrl = getStrapiMediaUrl(doc.file);
 
         return {
           name: doc.name ?? doc.file?.alternativeText ?? "",
@@ -146,7 +124,7 @@ async function fetchServiceData(locale: string): Promise<{
   metas: TabNavItem[];
   tabs: TabNavItem[];
 }> {
-  const baseUrl = getApiBaseUrl();
+  const baseUrl = getStrapiApiBaseUrl();
 
   try {
     const response = await fetch(`${baseUrl}/service?locale=${locale}&populate=*`, {
@@ -173,7 +151,7 @@ async function fetchServiceData(locale: string): Promise<{
 }
 
 async function fetchTestingData(locale: string): Promise<TestingContent | null> {
-  const baseUrl = getApiBaseUrl();
+  const baseUrl = getStrapiApiBaseUrl();
 
   try {
     const response = await fetch(
