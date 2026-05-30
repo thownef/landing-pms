@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { FlaskConical, HardHat, PenTool } from "lucide-react";
 import { TabNav, type Tab, type TabNavItem } from "@/components/services/TabNav";
-import { TabTesting } from "@/components/services/TabTesting";
+import { TabTesting, type TestingContent } from "@/components/services/TabTesting";
 import { TabSupervision } from "@/components/services/TabSupervision";
 import { TabDesign } from "@/components/services/TabDesign";
 
@@ -17,10 +17,11 @@ export interface ServiceProps {
   pageTitle: string;
   tabs: TabNavItem[];
   metas: TabNavItem[];
+  testing?: TestingContent | null;
   initialTab?: Tab;
 }
 
-export function Service({ pageTitle, tabs, metas, initialTab = "thi_nghiem" }: ServiceProps) {
+export function Service({ pageTitle, tabs, metas, testing, initialTab = "thi_nghiem" }: ServiceProps) {
   const [activeTab, setActiveTab] = useState<Tab>(initialTab);
 
   const metaSource = metas.length > 0 ? metas : tabs;
@@ -57,7 +58,7 @@ export function Service({ pageTitle, tabs, metas, initialTab = "thi_nghiem" }: S
         <div className="mx-auto max-w-7xl px-4 md:px-6 lg:px-8">
           <TabNav active={activeTab} tabs={tabs} onChange={setActiveTab} />
           <div className="bg-slate-50 rounded-3xl border border-gray-200 shadow-xl overflow-hidden p-6 md:p-10 text-left">
-            {activeTab === "thi_nghiem" && <TabTesting />}
+            {activeTab === "thi_nghiem" && <TabTesting content={testing ?? null} />}
             {activeTab === "giam_sat" && <TabSupervision />}
             {activeTab === "thiet_ke" && <TabDesign />}
           </div>
