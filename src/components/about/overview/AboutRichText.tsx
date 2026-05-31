@@ -7,7 +7,9 @@ function isListItem(child: AboutRichTextChild | AboutListItemBlock): child is Ab
 export function renderParagraphChildren(children: AboutRichTextChild[] | null | undefined) {
   return children?.map((child, i) => {
     const text = child.text ?? "";
+    if (child.bold && child.italic) return <strong key={i}><em>{text}</em></strong>;
     if (child.bold) return <strong key={i}>{text}</strong>;
+    if (child.italic) return <em key={i}>{text}</em>;
     return <span key={i}>{text}</span>;
   });
 }
@@ -22,7 +24,9 @@ export function renderListItem(block: AboutRichTextBlock, index: number) {
           .flatMap((li) => li.children ?? [])
           .map((child, i) => {
             const text = child.text ?? "";
+            if (child.bold && child.italic) return <strong key={i}><em>{text}</em></strong>;
             if (child.bold) return <strong key={i}>{text}</strong>;
+            if (child.italic) return <em key={i}>{text}</em>;
             return <span key={i}>{text}</span>;
           })}
       </span>
