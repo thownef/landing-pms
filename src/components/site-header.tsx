@@ -133,8 +133,7 @@ export function SiteHeader() {
               <span className="text-sm font-extrabold uppercase leading-none tracking-tight text-emerald-950 transition-colors group-hover:text-[#098a58] md:text-base">
                 Phúc Mỹ Sơn
               </span>
-              <span className="mt-1 text-[9px] font-semibold uppercase tracking-wider text-[#098a58]">{t("header.tagline")}</span>
-              <span className="hidden text-[8px] font-mono text-amber-600 sm:block">LAS-XD HCM.017</span>
+              <span className="mt-1 text-xs font-semibold uppercase tracking-wider text-[#098a58]">{t("header.tagline")}</span>
             </div>
           </Link>
 

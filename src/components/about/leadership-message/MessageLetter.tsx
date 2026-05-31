@@ -13,7 +13,7 @@ export function MessageLetter({ ghiChu, tieuDe, noiDung1, noiDung2, noiDung3 }: 
   return (
     <div className="space-y-8 text-left">
       {/* Label */}
-      <div className="flex items-center space-x-2 text-amber-600 font-mono text-xs font-bold uppercase tracking-wider">
+      <div className="flex items-center space-x-2 text-amber-600 text-sm font-bold uppercase tracking-wider">
         <Quote className="w-4 h-4 text-amber-500 rotate-180" />
         <span>{ghiChu}</span>
       </div>
